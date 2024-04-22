@@ -14,6 +14,7 @@
 		2E908AC02BD64A7500D54773 /* OneBoardProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E908ABE2BD64A7500D54773 /* OneBoardProject.xcdatamodeld */; };
 		2E908AC22BD64A7800D54773 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E908AC12BD64A7800D54773 /* Assets.xcassets */; };
 		2E908AC52BD64A7800D54773 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2E908AC42BD64A7800D54773 /* Base */; };
+		622F02D22BD66F4200E9BF28 /* RegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622F02D02BD66F4200E9BF28 /* RegistViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		2E908AC12BD64A7800D54773 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E908AC42BD64A7800D54773 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E908AC62BD64A7800D54773 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		622F02D02BD66F4200E9BF28 /* RegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegistViewController.swift; path = ../RegistViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				2E908AB52BD64A7500D54773 /* AppDelegate.swift */,
 				2E908AB72BD64A7500D54773 /* SceneDelegate.swift */,
 				2E908AB92BD64A7500D54773 /* ViewController.swift */,
+				622F02D02BD66F4200E9BF28 /* RegistViewController.swift */,
 				2E908ABB2BD64A7500D54773 /* Main.storyboard */,
 				2E908AC12BD64A7800D54773 /* Assets.xcassets */,
 				2E908AC32BD64A7800D54773 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				622F02D22BD66F4200E9BF28 /* RegistViewController.swift in Sources */,
 				2E908ABA2BD64A7500D54773 /* ViewController.swift in Sources */,
 				2E908AC02BD64A7500D54773 /* OneBoardProject.xcdatamodeld in Sources */,
 				2E908AB62BD64A7500D54773 /* AppDelegate.swift in Sources */,
