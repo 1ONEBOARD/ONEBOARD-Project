@@ -42,7 +42,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="DjS-af-oIR"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="아이디를 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T0i-1A-eCa">
@@ -50,7 +50,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Dqp-9y-aRX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="비밀번호를 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dAy-et-9ts">
@@ -58,7 +58,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Xal-zY-60b"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpA-1M-8IJ">
@@ -103,6 +103,11 @@
                             <constraint firstItem="hwm-y1-PbC" firstAttribute="trailing" secondItem="T0i-1A-eCa" secondAttribute="trailing" constant="45" id="yG1-TZ-MLn"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="registIDTextField" destination="T0i-1A-eCa" id="ico-kv-Oip"/>
+                        <outlet property="registNmaeTextField" destination="iHS-KX-eXu" id="DZ1-JQ-Jrt"/>
+                        <outlet property="registPasswordTextField" destination="dAy-et-9ts" id="bUd-gZ-OwJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcg-ZC-2Wm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
