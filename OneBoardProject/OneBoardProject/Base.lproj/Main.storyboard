@@ -63,12 +63,16 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpA-1M-8IJ">
                                 <rect key="frame" x="45" y="535" width="303" height="50"/>
+                                <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="yPI-z7-ZzR"/>
                                 </constraints>
-                                <color key="tintColor" red="0.047058823530000002" green="0.72549019609999998" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="회원가입"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="회원가입">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lc-rg-9qs">
                                 <rect key="frame" x="45" y="605" width="303" height="50"/>
@@ -107,11 +111,12 @@
                         <outlet property="registIDTextField" destination="T0i-1A-eCa" id="ico-kv-Oip"/>
                         <outlet property="registNmaeTextField" destination="iHS-KX-eXu" id="DZ1-JQ-Jrt"/>
                         <outlet property="registPasswordTextField" destination="dAy-et-9ts" id="bUd-gZ-OwJ"/>
+                        <outlet property="registerButton" destination="jpA-1M-8IJ" id="961-mp-cdP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcg-ZC-2Wm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="891" y="-17"/>
+            <point key="canvasLocation" x="895" y="-35"/>
         </scene>
     </scenes>
     <resources>
