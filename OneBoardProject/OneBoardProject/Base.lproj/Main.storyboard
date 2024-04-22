@@ -61,8 +61,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lc-rg-9qs">
+                                <rect key="frame" x="45" y="655" width="303" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="j3W-yL-GSR"/>
+                                </constraints>
+                                <color key="tintColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="로그인"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="비밀번호를 다시 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UJc-TI-5Lr">
+                                <rect key="frame" x="45" y="505" width="303" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="WMo-Wg-DOL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpA-1M-8IJ">
-                                <rect key="frame" x="45" y="535" width="303" height="50"/>
+                                <rect key="frame" x="45" y="585" width="303" height="50"/>
                                 <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="yPI-z7-ZzR"/>
@@ -73,15 +90,6 @@
                                 <state key="normal" title="회원가입">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lc-rg-9qs">
-                                <rect key="frame" x="45" y="605" width="303" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="j3W-yL-GSR"/>
-                                </constraints>
-                                <color key="tintColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="로그인"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hwm-y1-PbC"/>
@@ -96,10 +104,13 @@
                             <constraint firstItem="jpA-1M-8IJ" firstAttribute="leading" secondItem="hwm-y1-PbC" secondAttribute="leading" constant="45" id="KDU-xL-kVJ"/>
                             <constraint firstItem="hwm-y1-PbC" firstAttribute="trailing" secondItem="jpA-1M-8IJ" secondAttribute="trailing" constant="45" id="NE1-q4-lhT"/>
                             <constraint firstItem="hwm-y1-PbC" firstAttribute="trailing" secondItem="dAy-et-9ts" secondAttribute="trailing" constant="45" id="RGj-va-n9s"/>
+                            <constraint firstItem="UJc-TI-5Lr" firstAttribute="top" secondItem="dAy-et-9ts" secondAttribute="bottom" constant="20" id="SiP-Ew-GzC"/>
                             <constraint firstItem="hwm-y1-PbC" firstAttribute="trailing" secondItem="DME-zh-Ca8" secondAttribute="trailing" constant="45" id="V1d-4l-1z9"/>
-                            <constraint firstItem="jpA-1M-8IJ" firstAttribute="top" secondItem="dAy-et-9ts" secondAttribute="bottom" constant="50" id="aa8-Gm-8Gf"/>
+                            <constraint firstItem="UJc-TI-5Lr" firstAttribute="leading" secondItem="hwm-y1-PbC" secondAttribute="leading" constant="45" id="cgf-Fp-c2d"/>
                             <constraint firstItem="DME-zh-Ca8" firstAttribute="top" secondItem="hwm-y1-PbC" secondAttribute="top" constant="150" id="dEp-Jp-faR"/>
                             <constraint firstItem="dAy-et-9ts" firstAttribute="leading" secondItem="hwm-y1-PbC" secondAttribute="leading" constant="45" id="e3g-pa-GIK"/>
+                            <constraint firstItem="jpA-1M-8IJ" firstAttribute="top" secondItem="UJc-TI-5Lr" secondAttribute="bottom" constant="30" id="faP-bq-nFT"/>
+                            <constraint firstItem="hwm-y1-PbC" firstAttribute="trailing" secondItem="UJc-TI-5Lr" secondAttribute="trailing" constant="45" id="gGc-Uq-7xi"/>
                             <constraint firstItem="T0i-1A-eCa" firstAttribute="top" secondItem="iHS-KX-eXu" secondAttribute="bottom" constant="20" id="ikk-UP-J3Z"/>
                             <constraint firstItem="T0i-1A-eCa" firstAttribute="leading" secondItem="hwm-y1-PbC" secondAttribute="leading" constant="45" id="ne1-GB-9rs"/>
                             <constraint firstItem="3lc-rg-9qs" firstAttribute="top" secondItem="jpA-1M-8IJ" secondAttribute="bottom" constant="20" id="p6v-iI-1rF"/>
@@ -108,6 +119,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="checkPasswordTextField" destination="UJc-TI-5Lr" id="V3o-Oq-ZdU"/>
                         <outlet property="registIDTextField" destination="T0i-1A-eCa" id="ico-kv-Oip"/>
                         <outlet property="registNmaeTextField" destination="iHS-KX-eXu" id="DZ1-JQ-Jrt"/>
                         <outlet property="registPasswordTextField" destination="dAy-et-9ts" id="bUd-gZ-OwJ"/>
