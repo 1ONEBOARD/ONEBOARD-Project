@@ -23,6 +23,8 @@
 		2E908ACF2BD64BF500D54773 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E908ACE2BD64BF500D54773 /* UserViewController.swift */; };
 		2E908AD22BD68B6C00D54773 /* UserDefaultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E908AD12BD68B6C00D54773 /* UserDefaultTableViewCell.xib */; };
 		2E908AD32BD68B6C00D54773 /* UserDefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E908AD02BD68B6C00D54773 /* UserDefaultTableViewCell.swift */; };
+		B66752122BD66A76003ADA3E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66752112BD66A76003ADA3E /* MapViewController.swift */; };
+		B66752142BD66AB7003ADA3E /* KickboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66752132BD66AB7003ADA3E /* KickboardData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		2E908ACE2BD64BF500D54773 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		2E908AD02BD68B6C00D54773 /* UserDefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultTableViewCell.swift; sourceTree = "<group>"; };
 		2E908AD12BD68B6C00D54773 /* UserDefaultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDefaultTableViewCell.xib; sourceTree = "<group>"; };
+		B66752112BD66A76003ADA3E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B66752132BD66AB7003ADA3E /* KickboardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KickboardData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,21 +82,23 @@
 			children = (
 				2E908AB52BD64A7500D54773 /* AppDelegate.swift */,
 				2E908AB72BD64A7500D54773 /* SceneDelegate.swift */,
-				2E908AB92BD64A7500D54773 /* ViewController.swift */,
 				2E695CFA2BD74EB500D8263E /* Rental.swift */,
 				2E695CFC2BD74ECF00D8263E /* User.swift */,
-				2E908ABB2BD64A7500D54773 /* Main.storyboard */,
-				2E908AC12BD64A7800D54773 /* Assets.xcassets */,
-				2E908AC32BD64A7800D54773 /* LaunchScreen.storyboard */,
-				2E908AC62BD64A7800D54773 /* Info.plist */,
-				2E908ABE2BD64A7500D54773 /* OneBoardProject.xcdatamodeld */,
-				2E908ACC2BD64BE500D54773 /* UserStoryboard.storyboard */,
+				B66752132BD66AB7003ADA3E /* KickboardData.swift */,
+				2E908AB92BD64A7500D54773 /* ViewController.swift */,
+				B66752112BD66A76003ADA3E /* MapViewController.swift */,
 				2E908ACE2BD64BF500D54773 /* UserViewController.swift */,
 				2E695CFE2BD75F4B00D8263E /* UserViewController+TableView.swift */,
 				2E908AD02BD68B6C00D54773 /* UserDefaultTableViewCell.swift */,
-				2E908AD12BD68B6C00D54773 /* UserDefaultTableViewCell.xib */,
 				2E695CF62BD7463D00D8263E /* RentalListTableViewCell.swift */,
+				2E908ABB2BD64A7500D54773 /* Main.storyboard */,
+				2E908ACC2BD64BE500D54773 /* UserStoryboard.storyboard */,
+				2E908AD12BD68B6C00D54773 /* UserDefaultTableViewCell.xib */,
 				2E695CF72BD7463D00D8263E /* RentalListTableViewCell.xib */,
+				2E908AC32BD64A7800D54773 /* LaunchScreen.storyboard */,
+				2E908AC12BD64A7800D54773 /* Assets.xcassets */,
+				2E908AC62BD64A7800D54773 /* Info.plist */,
+				2E908ABE2BD64A7500D54773 /* OneBoardProject.xcdatamodeld */,
 			);
 			path = OneBoardProject;
 			sourceTree = "<group>";
@@ -173,6 +179,7 @@
 			files = (
 				2E908AD32BD68B6C00D54773 /* UserDefaultTableViewCell.swift in Sources */,
 				2E695CFF2BD75F4B00D8263E /* UserViewController+TableView.swift in Sources */,
+				B66752142BD66AB7003ADA3E /* KickboardData.swift in Sources */,
 				2E908ABA2BD64A7500D54773 /* ViewController.swift in Sources */,
 				2E908ACF2BD64BF500D54773 /* UserViewController.swift in Sources */,
 				2E908AC02BD64A7500D54773 /* OneBoardProject.xcdatamodeld in Sources */,
@@ -180,6 +187,7 @@
 				2E695CFD2BD74ECF00D8263E /* User.swift in Sources */,
 				2E695CFB2BD74EB500D8263E /* Rental.swift in Sources */,
 				2E695CF92BD7463D00D8263E /* RentalListTableViewCell.swift in Sources */,
+				B66752122BD66A76003ADA3E /* MapViewController.swift in Sources */,
 				2E908AB82BD64A7500D54773 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
