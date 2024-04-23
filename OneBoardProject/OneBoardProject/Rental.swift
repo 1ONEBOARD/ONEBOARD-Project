@@ -11,6 +11,6 @@ struct Rental {
     var kickBoardID: String
     var kickBoardNumber: Int
     var rentalStartTime: String
-    var rentalTotalTime: Int
+    var rentalTotalTime: Int?
     var rentalPrice: Int
 }
