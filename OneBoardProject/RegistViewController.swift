@@ -48,6 +48,8 @@ class RegistViewController: UIViewController {
         self.checkPasswordTextField.addTarget(self, action: #selector(self.TextFieldDidChanged(_:)), for: .editingChanged)
         
         resetForm()
+//        addUserInform()
+//        getData()
     }
     
     func resetForm() {
@@ -85,7 +87,6 @@ class RegistViewController: UIViewController {
     
     
     // TextField 유효성 검사
-    
     @IBAction func nameChanged(_ sender: Any) {
         if let name = registNmaeTextField.text {
             if let errorMessage = invalidName(name) {
@@ -160,19 +161,65 @@ class RegistViewController: UIViewController {
     @IBAction func addUserInfomButton(_ sender: Any) {
         let alert = UIAlertController(title: "회원가입 하시겠습니까?", message: "입력하신 정보로 회원가입이 진행됩니다.", preferredStyle: .alert)
         let confirm = UIAlertAction(title: "예", style: .default, handler: { [self]_ in
+            addUserInform()
             resetForm()
             resetLabelForm()
+            registDone()
         })
         let cancel = UIAlertAction(title: "취소", style: .destructive, handler: nil)
         
         alert.addAction(confirm)
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func registDone() {
+        let doneTitle = "환영합니다!"
+        let doneMessage = "로그인 버튼을 눌러 로그인을 해주세요."
+        
+        let alert = UIAlertController(title: doneTitle, message: doneMessage, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
+            
+        }
+        
+        alert.addAction(confirmAction)
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    // 로그인 버튼
+    @IBAction func moveToLoginViewButton(_ sender: Any) {
+        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "loginViewController") else {return}
+        self.present(nextVC, animated: true)
+    }
+    
+    
+    // coredata에 추가
+    func addUserInform() {
+        guard let context = self.persistentContainer?.viewContext else {return}
+        
+        let userInform = Users(context: context)
+        
+        userInform.userName = registNmaeTextField.text
+        userInform.userID = registIDTextField.text
+        userInform.userPassword = registPasswordTextField.text
+        
+        try? context.save()
         
     }
     
     
     
+//     확인용
+//    func getData() {
+//        guard let context = self.persistentContainer?.viewContext else {return}
+//
+//        let request = Users.fetchRequest()
+//        let user = try? context.fetch(request)
+//
+//        print(user?.count)
+//    }
+//    
     
     
 }
@@ -217,17 +264,17 @@ extension RegistViewController: UITextFieldDelegate {
             self.passwordCheckInformLabel.text = "비밀번호가 일치합니다."
             self.passwordCheckInformLabel.textColor = UIColor(named: "GcooColor")
             return true
-        } else {
+        } else if (first.text != second.text) {
             self.passwordCheckInformLabel.isHidden = false
             self.passwordCheckInformLabel.text = "비밀번호가 일치하지 않습니다."
             self.passwordCheckInformLabel.textColor = .red
-            return false
+            return true
         }
+        return true
     }
     
-    // TextField 입력값 변하면 유효성 검사
+    // 회원가입 버튼 활성화
     @objc func TextFieldDidChanged(_ sender: UITextField) {
-        // 4개의 TextField가 채워졌는지 확인 & 비밀번호 일치성 여부확인
         if !(self.registNmaeTextField.text?.isEmpty ?? true) &&
             !(self.registIDTextField.text?.isEmpty ?? true) &&
             !(self.registPasswordTextField.text?.isEmpty ?? true) &&
