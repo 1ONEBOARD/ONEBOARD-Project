@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BE6C0DA2BD64E0000B78DC6 /* LoginPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6C0D92BD64E0000B78DC6 /* LoginPageController.swift */; };
+		0BE6C0DC2BD64E1000B78DC6 /* LoginPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6C0DB2BD64E1000B78DC6 /* LoginPage.storyboard */; };
 		2E908AB62BD64A7500D54773 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E908AB52BD64A7500D54773 /* AppDelegate.swift */; };
 		2E908AB82BD64A7500D54773 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E908AB72BD64A7500D54773 /* SceneDelegate.swift */; };
 		2E908ABA2BD64A7500D54773 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E908AB92BD64A7500D54773 /* ViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0BE6C0D92BD64E0000B78DC6 /* LoginPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageController.swift; sourceTree = "<group>"; };
+		0BE6C0DB2BD64E1000B78DC6 /* LoginPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginPage.storyboard; sourceTree = "<group>"; };
 		2E908AB22BD64A7500D54773 /* OneBoardProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneBoardProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E908AB52BD64A7500D54773 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E908AB72BD64A7500D54773 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 				2E908AB72BD64A7500D54773 /* SceneDelegate.swift */,
 				2E908AB92BD64A7500D54773 /* ViewController.swift */,
 				2E908ABB2BD64A7500D54773 /* Main.storyboard */,
+				0BE6C0D92BD64E0000B78DC6 /* LoginPageController.swift */,
+				0BE6C0DB2BD64E1000B78DC6 /* LoginPage.storyboard */,
 				2E908AC12BD64A7800D54773 /* Assets.xcassets */,
 				2E908AC32BD64A7800D54773 /* LaunchScreen.storyboard */,
 				2E908AC62BD64A7800D54773 /* Info.plist */,
@@ -128,6 +134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BE6C0DC2BD64E1000B78DC6 /* LoginPage.storyboard in Resources */,
 				2E908AC22BD64A7800D54773 /* Assets.xcassets in Resources */,
 				2E908AC52BD64A7800D54773 /* Base in Resources */,
 				2E908ABD2BD64A7500D54773 /* Base in Resources */,
@@ -141,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BE6C0DA2BD64E0000B78DC6 /* LoginPageController.swift in Sources */,
 				2E908ABA2BD64A7500D54773 /* ViewController.swift in Sources */,
 				2E908AC02BD64A7500D54773 /* OneBoardProject.xcdatamodeld in Sources */,
 				2E908AB62BD64A7500D54773 /* AppDelegate.swift in Sources */,
@@ -304,6 +312,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,6 +341,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
