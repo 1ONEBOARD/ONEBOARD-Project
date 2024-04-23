@@ -36,8 +36,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         button.addTarget(self, action: #selector(myProfileButtonTapped), for: .touchUpInside)
         return button
     }()
-    
-    
+
     lazy var buttonStackView: UIStackView = {
         let stview = UIStackView(arrangedSubviews: [myLocationButton, myProfileButton])
         stview.axis = .vertical
@@ -50,6 +49,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         setupMapView()
         setupButton()
+        setupBackButton()
     }
     
     func setupMapView() {
@@ -84,8 +84,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         ])
     }
     
+    func setupBackButton() {
+        let backImage = UIImage(named: "lessthan")
+        self.navigationController?.navigationBar.backIndicatorImage = backImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+
+        // 백 버튼 타이틀 제거
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        backButton.tintColor = .black
+        self.navigationItem.backBarButtonItem = backButton
+    }
+    
     @objc func myProfileButtonTapped() {
-        
+        let storyboard = UIStoryboard(name: "UserStoryboard", bundle: nil)
+        if let modalVC = storyboard.instantiateViewController(withIdentifier: "UserViewController") as? UserViewController {
+            navigationController?.pushViewController(modalVC, animated: true)
+        }
     }
     
     @objc func myLocationButtonTapped() {
