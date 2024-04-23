@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E695CF82BD7463D00D8263E /* RentalListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E695CF72BD7463D00D8263E /* RentalListTableViewCell.xib */; };
+		2E695CF92BD7463D00D8263E /* RentalListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E695CF62BD7463D00D8263E /* RentalListTableViewCell.swift */; };
+		2E695CFB2BD74EB500D8263E /* Rental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E695CFA2BD74EB500D8263E /* Rental.swift */; };
+		2E695CFD2BD74ECF00D8263E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E695CFC2BD74ECF00D8263E /* User.swift */; };
 		2E908AB62BD64A7500D54773 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E908AB52BD64A7500D54773 /* AppDelegate.swift */; };
 		2E908AB82BD64A7500D54773 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E908AB72BD64A7500D54773 /* SceneDelegate.swift */; };
 		2E908ABA2BD64A7500D54773 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E908AB92BD64A7500D54773 /* ViewController.swift */; };
@@ -16,9 +20,15 @@
 		2E908AC52BD64A7800D54773 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2E908AC42BD64A7800D54773 /* Base */; };
 		2E908ACD2BD64BE500D54773 /* UserStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E908ACC2BD64BE500D54773 /* UserStoryboard.storyboard */; };
 		2E908ACF2BD64BF500D54773 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E908ACE2BD64BF500D54773 /* UserViewController.swift */; };
+		2E908AD22BD68B6C00D54773 /* UserDefaultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E908AD12BD68B6C00D54773 /* UserDefaultTableViewCell.xib */; };
+		2E908AD32BD68B6C00D54773 /* UserDefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E908AD02BD68B6C00D54773 /* UserDefaultTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E695CF62BD7463D00D8263E /* RentalListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalListTableViewCell.swift; sourceTree = "<group>"; };
+		2E695CF72BD7463D00D8263E /* RentalListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RentalListTableViewCell.xib; sourceTree = "<group>"; };
+		2E695CFA2BD74EB500D8263E /* Rental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rental.swift; sourceTree = "<group>"; };
+		2E695CFC2BD74ECF00D8263E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2E908AB22BD64A7500D54773 /* OneBoardProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneBoardProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E908AB52BD64A7500D54773 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E908AB72BD64A7500D54773 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +40,8 @@
 		2E908AC62BD64A7800D54773 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E908ACC2BD64BE500D54773 /* UserStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserStoryboard.storyboard; sourceTree = "<group>"; };
 		2E908ACE2BD64BF500D54773 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		2E908AD02BD68B6C00D54773 /* UserDefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultTableViewCell.swift; sourceTree = "<group>"; };
+		2E908AD12BD68B6C00D54773 /* UserDefaultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDefaultTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +77,8 @@
 				2E908AB52BD64A7500D54773 /* AppDelegate.swift */,
 				2E908AB72BD64A7500D54773 /* SceneDelegate.swift */,
 				2E908AB92BD64A7500D54773 /* ViewController.swift */,
+				2E695CFA2BD74EB500D8263E /* Rental.swift */,
+				2E695CFC2BD74ECF00D8263E /* User.swift */,
 				2E908ABB2BD64A7500D54773 /* Main.storyboard */,
 				2E908AC12BD64A7800D54773 /* Assets.xcassets */,
 				2E908AC32BD64A7800D54773 /* LaunchScreen.storyboard */,
@@ -72,6 +86,10 @@
 				2E908ABE2BD64A7500D54773 /* OneBoardProject.xcdatamodeld */,
 				2E908ACC2BD64BE500D54773 /* UserStoryboard.storyboard */,
 				2E908ACE2BD64BF500D54773 /* UserViewController.swift */,
+				2E908AD02BD68B6C00D54773 /* UserDefaultTableViewCell.swift */,
+				2E908AD12BD68B6C00D54773 /* UserDefaultTableViewCell.xib */,
+				2E695CF62BD7463D00D8263E /* RentalListTableViewCell.swift */,
+				2E695CF72BD7463D00D8263E /* RentalListTableViewCell.xib */,
 			);
 			path = OneBoardProject;
 			sourceTree = "<group>";
@@ -135,8 +153,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E908ACD2BD64BE500D54773 /* UserStoryboard.storyboard in Resources */,
+				2E695CF82BD7463D00D8263E /* RentalListTableViewCell.xib in Resources */,
 				2E908AC22BD64A7800D54773 /* Assets.xcassets in Resources */,
 				2E908AC52BD64A7800D54773 /* Base in Resources */,
+				2E908AD22BD68B6C00D54773 /* UserDefaultTableViewCell.xib in Resources */,
 				2E908ABD2BD64A7500D54773 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,10 +168,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E908AD32BD68B6C00D54773 /* UserDefaultTableViewCell.swift in Sources */,
 				2E908ABA2BD64A7500D54773 /* ViewController.swift in Sources */,
 				2E908ACF2BD64BF500D54773 /* UserViewController.swift in Sources */,
 				2E908AC02BD64A7500D54773 /* OneBoardProject.xcdatamodeld in Sources */,
 				2E908AB62BD64A7500D54773 /* AppDelegate.swift in Sources */,
+				2E695CFD2BD74ECF00D8263E /* User.swift in Sources */,
+				2E695CFB2BD74EB500D8263E /* Rental.swift in Sources */,
+				2E695CF92BD7463D00D8263E /* RentalListTableViewCell.swift in Sources */,
 				2E908AB82BD64A7500D54773 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +336,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = UserStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -340,6 +365,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = UserStoryboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

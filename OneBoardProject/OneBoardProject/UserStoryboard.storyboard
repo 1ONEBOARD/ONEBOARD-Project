@@ -15,13 +15,47 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QkB-Eo-FAW">
+                                <rect key="frame" x="14" y="747" width="365" height="61"/>
+                                <color key="backgroundColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QkB-Eo-FAW" secondAttribute="height" multiplier="365:61" id="STo-oE-f2B"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="로그아웃">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="logOutButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="owJ-ft-Gez"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="AEq-6n-JBV">
+                                <rect key="frame" x="0.0" y="59" width="393" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="AEq-6n-JBV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6xs-AH-B3d"/>
+                            <constraint firstItem="QkB-Eo-FAW" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.928753" id="EFS-pQ-6YV"/>
+                            <constraint firstItem="AEq-6n-JBV" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="LgO-5a-57q"/>
+                            <constraint firstItem="QkB-Eo-FAW" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="MKn-4N-eMW"/>
+                            <constraint firstItem="AEq-6n-JBV" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ZLh-94-HpJ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="QkB-Eo-FAW" secondAttribute="bottom" constant="10" id="gF0-GW-6Yu"/>
+                            <constraint firstItem="QkB-Eo-FAW" firstAttribute="top" secondItem="AEq-6n-JBV" secondAttribute="bottom" constant="15" id="zOq-V6-u9H"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="logoutButton" destination="QkB-Eo-FAW" id="PaO-py-qVp"/>
+                        <outlet property="userTableView" destination="AEq-6n-JBV" id="ncu-Ex-Wm9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-282" y="-26"/>
+            <point key="canvasLocation" x="-283.20610687022901" y="-26.056338028169016"/>
         </scene>
     </scenes>
     <resources>
