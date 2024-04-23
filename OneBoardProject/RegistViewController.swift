@@ -57,6 +57,7 @@ class RegistViewController: UIViewController {
         registIDTextField.text = ""
         registPasswordTextField.text = ""
         checkPasswordTextField.text = ""
+        
     }
     
     func resetLabelForm() {
@@ -94,7 +95,9 @@ class RegistViewController: UIViewController {
                 nameInformLabel.text = errorMessage
                 nameInformLabel.textColor = .red
             }
-            else {
+            else if name.isEmpty {
+                nameInformLabel.isHidden = true
+            } else {
                 nameInformLabel.text = "환영합니다."
                 nameInformLabel.textColor = UIColor(named: "GcooColor")
             }
@@ -102,7 +105,7 @@ class RegistViewController: UIViewController {
     }
     
     func invalidName(_ value: String) -> String? {
-        let reqularExpression = "^.*([가-힣])+.*$"
+        let reqularExpression = "^[가-힣\\s]*$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", reqularExpression)
         if !predicate.evaluate(with: value) {
             return "알맞지 않은 형식입니다."
@@ -116,6 +119,9 @@ class RegistViewController: UIViewController {
             if let errorMessage = invalidID(id) {
                 idInformLabel.text = errorMessage
                 idInformLabel.textColor = .red
+            } else if id.isEmpty {
+                idInformLabel.text = "영문, 숫자를 포함한 8-16자"
+                idInformLabel.textColor = UIColor(named: "defaultsColor")
             }
             else {
                 idInformLabel.text = "사용 가능한 아이디입니다."
@@ -125,7 +131,7 @@ class RegistViewController: UIViewController {
     }
     
     func invalidID(_ value: String) -> String? {
-        let reqularExpression = "(?=.*[a-z])(?=.*[\\d]).{8,16}"
+        let reqularExpression = "[A-Za-z0-9]{8,16}"
         let predicate = NSPredicate(format: "SELF MATCHES %@", reqularExpression)
         if !predicate.evaluate(with: value) {
             return "알맞지 않은 형식입니다."
@@ -139,6 +145,9 @@ class RegistViewController: UIViewController {
             if let errorMessage = invalidPassword(password) {
                 passwordInformLabel.text = errorMessage
                 passwordInformLabel.textColor = .red
+            } else if password.isEmpty {
+                passwordInformLabel.text = "영문, 숫자를 포함한 8-16자"
+                passwordInformLabel.textColor = UIColor(named: "defualtsColor")
             }
             else {
                 passwordInformLabel.text = "사용 가능한 비밀번호입니다."
@@ -147,8 +156,9 @@ class RegistViewController: UIViewController {
         }
     }
     
+    
     func invalidPassword(_ value: String) -> String? {
-        let reqularExpression = "(?=.*[a-z])(?=.*[\\d]).{8,16}"
+        let reqularExpression = "[A-Za-z0-9]{8,16}"
         let predicate = NSPredicate(format: "SELF MATCHES %@", reqularExpression)
         if !predicate.evaluate(with: value) {
             return "알맞지 않은 형식입니다"
@@ -248,8 +258,6 @@ extension RegistViewController: UITextFieldDelegate {
         nameInformLabel.isHidden = true
         passwordCheckInformLabel.isHidden = true
         
-        // 회원가입 버튼 기본 비활성화
-        registerButton.isEnabled = false
     }
     
     // 화면 터치 시 TextField 키보드 내려가는 기능
@@ -264,13 +272,12 @@ extension RegistViewController: UITextFieldDelegate {
             self.passwordCheckInformLabel.text = "비밀번호가 일치합니다."
             self.passwordCheckInformLabel.textColor = UIColor(named: "GcooColor")
             return true
-        } else if (first.text != second.text) {
+        } else {
             self.passwordCheckInformLabel.isHidden = false
             self.passwordCheckInformLabel.text = "비밀번호가 일치하지 않습니다."
             self.passwordCheckInformLabel.textColor = .red
-            return true
+            return false
         }
-        return true
     }
     
     // 회원가입 버튼 활성화
