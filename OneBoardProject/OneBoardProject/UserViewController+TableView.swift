@@ -35,16 +35,26 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    func setUserRentalListCell(_ tableView: UITableView, 
+    func setUserRentalListCell(_ tableView: UITableView,
                                indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "rentalListCell", for: indexPath) as! RentalListTableViewCell
         cell.kickBoardIDLabel.text = userData.rentalList[indexPath.row].kickBoardID
         cell.kickBoardNumberLabel.text = "\(userData.rentalList[indexPath.row].kickBoardNumber)"
-        cell.rentalPriceLabel.text = "\(userData.rentalList[indexPath.row].rentalPrice)원"
+        cell.rentalPriceLabel.text = setPriceLabel(price: userData.rentalList[indexPath.row].rentalPrice)
         cell.rentalStartTimeLabel.text = userData.rentalList[indexPath.row].rentalStartTime
-        cell.rentalTimeLabel.text = "\(userData.rentalList[indexPath.row].rentalTotalTime)분"
+        if let rentalTotalTime = userData.rentalList[indexPath.row].rentalTotalTime {
+            cell.rentalTimeLabel.text = "\(rentalTotalTime)분"
+        }
         return cell
+    }
+    
+    
+    func setPriceLabel(price: Int) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        guard let priceString = numberFormatter.string(from: NSNumber(value: price)) else { return "" }
+        return priceString + "원"
     }
     
     
@@ -150,9 +160,11 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "rentalListCell", for: indexPath) as! RentalListTableViewCell
                 cell.kickBoardIDLabel.text = currentRental.kickBoardID
                 cell.kickBoardNumberLabel.text = "\(currentRental.kickBoardNumber)"
-                cell.rentalPriceLabel.text = "\(currentRental.rentalPrice)원"
+                cell.rentalPriceLabel.text = setPriceLabel(price: currentRental.rentalPrice)
                 cell.rentalStartTimeLabel.text = currentRental.rentalStartTime
-                cell.rentalTimeLabel.text = "\(currentRental.rentalTotalTime)분"
+                if let rentalTotalTime = currentRental.rentalTotalTime {
+                    cell.rentalTimeLabel.text = "\(rentalTotalTime)분"
+                }
                 return cell
             case 2:
                 return setUserRentalListCell(tableView, indexPath: indexPath)

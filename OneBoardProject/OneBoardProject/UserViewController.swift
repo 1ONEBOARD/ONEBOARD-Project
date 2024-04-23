@@ -20,7 +20,13 @@ class UserViewController: UIViewController {
                                            Rental(kickBoardID: "ONE-A2", kickBoardNumber: 445678, rentalStartTime: "2024.01.20 12:40 AM", rentalTotalTime: 10, rentalPrice: 10*180),
                                            Rental(kickBoardID: "ONE-B1", kickBoardNumber: 123546, rentalStartTime: "2024.01.23 12:40 AM", rentalTotalTime: 12, rentalPrice: 12*180),
                                            Rental(kickBoardID: "ONE-B2", kickBoardNumber: 879678, rentalStartTime: "2024.01.25 12:40 AM", rentalTotalTime: 11, rentalPrice: 11*180),
+                                           Rental(kickBoardID: "ONE-B3", kickBoardNumber: 123453, rentalStartTime: "2024.01.26 12:40 AM", rentalTotalTime: 6, rentalPrice: 6*180),
+                                           Rental(kickBoardID: "ONE-A1", kickBoardNumber: 123456, rentalStartTime: "2024.01.19 12:40 AM", rentalTotalTime: 7, rentalPrice: 7*180),
+                                           Rental(kickBoardID: "ONE-A2", kickBoardNumber: 445678, rentalStartTime: "2024.01.20 12:40 AM", rentalTotalTime: 10, rentalPrice: 10*180),
+                                           Rental(kickBoardID: "ONE-B1", kickBoardNumber: 123546, rentalStartTime: "2024.01.23 12:40 AM", rentalTotalTime: 12, rentalPrice: 12*180),
+                                           Rental(kickBoardID: "ONE-B2", kickBoardNumber: 879678, rentalStartTime: "2024.01.25 12:40 AM", rentalTotalTime: 11, rentalPrice: 11*180),
                                            Rental(kickBoardID: "ONE-B3", kickBoardNumber: 123453, rentalStartTime: "2024.01.26 12:40 AM", rentalTotalTime: 6, rentalPrice: 6*180)])
+
     
 //    var userData: User = User(userName: "홍길동",
 //                              id: "gildong2",
