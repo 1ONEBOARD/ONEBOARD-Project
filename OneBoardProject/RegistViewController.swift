@@ -192,8 +192,10 @@ class RegistViewController: UIViewController {
         let request = Users.fetchRequest()
         let user = try? context.fetch(request)
         
-        for id in user! {
-            if id.userID == registIDTextField.text {
+        if let user = user {
+            if user.filter({ $0.userID == registIDTextField.text }).count != 0 {
+                print("중복")
+                print(#function)
                 let alert = UIAlertController(title: "중복된 아이디 입니다.", message: "다른 아이디를 사용해 주세요.", preferredStyle: .alert)
                 let confirm = UIAlertAction(title: "확인", style: .cancel)
                 idInformLabel.text = "중복된 아이디입니다."
@@ -201,7 +203,9 @@ class RegistViewController: UIViewController {
                 
                 alert.addAction(confirm)
                 present(alert, animated: true ,completion: nil)
-            } else {
+            }else {
+                print("중복아님")
+                print(#function)
                 idInformLabel.text = "사용 가능한 아이디입니다."
                 idInformLabel.textColor = UIColor(named: "GcooColor")
             }
@@ -245,8 +249,7 @@ class RegistViewController: UIViewController {
     
     // 로그인 버튼
     @IBAction func moveToLoginViewButton(_ sender: Any) {
-        guard let nextVC = self.storyboard?.instantiateViewController(identifier: "loginViewController") else {return}
-        self.present(nextVC, animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     
