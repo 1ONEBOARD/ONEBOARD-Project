@@ -50,6 +50,21 @@ class UserViewController: UIViewController {
     
     @IBAction func logOutButtonTapped(_ sender: UIButton) {
         print("로그아웃 되었습니다.")
+        
+        UserDefaults.standard.removeObject(forKey: "lastLoggedInUser")
+        
         // 로그인 페이지로 이동
+        navigateToMainPage()
+    }
+    
+    private func navigateToMainPage() {
+        let targetStoryboard = UIStoryboard(name: "LoginPage", bundle: nil)
+        guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "LoginPage") as? LoginPageController else {
+            print("Failed to instantiate LoginPageController from LoginPage.")
+            return
+        }
+        
+        targetVC.modalPresentationStyle = .fullScreen
+        present(targetVC, animated: true, completion: nil)
     }
 }

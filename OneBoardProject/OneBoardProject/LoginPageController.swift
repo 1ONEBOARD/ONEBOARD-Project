@@ -42,7 +42,6 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserDefaults.standard.removeObject(forKey: loggedUserKey)
 
         if let lastLoggedInUser = UserDefaults.standard.string(forKey: loggedUserKey) {
             print("UserDefaults-user: \(lastLoggedInUser)")
@@ -165,7 +164,9 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
 
     // sign-up button
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
-        guard let signUpVC = storyboard?.instantiateViewController(withIdentifier: "SignUpPage") else {
+        let targetStoryboard = UIStoryboard(name: "UserStoryboard", bundle: nil)
+        guard let signUpVC = targetStoryboard.instantiateViewController(withIdentifier: "SignUpPage") as? RegistViewController else {
+            print("Failed to instantiate RegistViewController from UserStoryboard.")
             return
         }
         
@@ -231,8 +232,8 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
     
     private func navigateToMainPage() {
         let targetStoryboard = UIStoryboard(name: "UserStoryboard", bundle: nil)
-        guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "MainPage") as? MapViewController else {
-            print("Failed to instantiate MainPageViewController from UserStoryboard.")
+        guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "MainPage") as? UINavigationController else {
+            print("Failed to instantiate UINavigationController from UserStoryboard.")
             return
         }
         
