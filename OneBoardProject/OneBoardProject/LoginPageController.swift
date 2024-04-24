@@ -131,7 +131,7 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
         // login -> main 화면 전환
         if let matchedUserInfo = users.first(where: { $0.id == userID && $0.password == password }) {
             print("Login successful: \(matchedUserInfo.userName)")
-            let targetStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let targetStoryboard = UIStoryboard(name: "UserStoryboard", bundle: nil)
 
             let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "MainPage")
 

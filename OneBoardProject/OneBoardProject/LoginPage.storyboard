@@ -115,7 +115,7 @@
         <!--MainPage-->
         <scene sceneID="4eF-gl-0qA">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="MainPage" storyboardName="Main" referencedIdentifier="MainPage" id="vhD-SY-yL6" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="MainPage" id="vhD-SY-yL6" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="EQw-61-mHc"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bKI-Tr-fIH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

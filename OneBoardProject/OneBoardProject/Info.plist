@@ -18,11 +18,7 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
-<<<<<<< HEAD
-					<string>LoginPage</string>
-=======
 					<string>UserStoryboard</string>
->>>>>>> 6bd86dcb1b87ad3b8d4918dbac274c2664d06170
 				</dict>
 			</array>
 		</dict>
