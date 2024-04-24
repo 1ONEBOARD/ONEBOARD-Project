@@ -2,6 +2,7 @@
 //  LoginPageController.swift
 //  OneBoardProject
 //
+
 import UIKit
 
 class LoginPageController: UIViewController, UITextFieldDelegate {
@@ -31,7 +32,9 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Properties
     var showPasswordButton = UIButton(type: .custom)
-
+    let clearButtonID = UIButton(type: .custom)
+    let clearButtonPW = UIButton(type: .custom)
+    
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -42,30 +45,74 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
         IDTextField.delegate = self
         PWTextField.delegate = self
         
-        PWTextField.isSecureTextEntry = true
-        PWTextField.textContentType = .password
-        
-        IDTextField.keyboardType = .asciiCapable
-        IDTextField.clearButtonMode = .always
-
         IDTextField.placeholder = "ID"
         PWTextField.placeholder = "password"
         
+        PWTextField.isSecureTextEntry = true
+        PWTextField.textContentType = .password
+        PWTextField.keyboardType = .asciiCapable
+        
+        IDTextField.keyboardType = .asciiCapable
 
+        // clearButtonID
+        clearButtonID.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+        clearButtonID.frame = CGRect(x: 40, y: 0, width: 20, height: 20)
+        clearButtonID.tintColor = UIColor(named: "defaultsColor")
+
+        let IDbuttonContainer = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: 20))
+        IDbuttonContainer.backgroundColor = .clear
+
+        IDbuttonContainer.addSubview(clearButtonID)
+
+        IDTextField.rightView = IDbuttonContainer
+        IDTextField.rightViewMode = .always
+
+        // showPasswordButton
         showPasswordButton.frame = CGRect(x: 0, y: 0, width: 30, height: 20)
         showPasswordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
         showPasswordButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
+        showPasswordButton.frame = CGRect(x: 0, y: 0, width: 30, height: 20)
         showPasswordButton.tintColor = UIColor(named: "defaultsColor")
 
-        let buttonContainer = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 20))
-        buttonContainer.addSubview(showPasswordButton)
+        // clearButtonPW
+        clearButtonPW.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+        clearButtonPW.frame = CGRect(x: 40, y: 0, width: 20, height: 20)
+        clearButtonPW.tintColor = UIColor(named: "defaultsColor")
 
-        PWTextField.rightView = buttonContainer
+        let PWbuttonContainer = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: 20))
+
+        PWbuttonContainer.addSubview(clearButtonPW)
+        PWbuttonContainer.addSubview(showPasswordButton)
+
+        PWTextField.rightView = PWbuttonContainer
         PWTextField.rightViewMode = .always
+        
+        // clear-button, show-password-button 초기 설정
+        clearButtonID.isHidden = true
+        clearButtonPW.isHidden = true
+        showPasswordButton.isHidden = true
+        
+        clearButtonPW.addTarget(self, action: #selector(clearText(_:)), for: .touchUpInside)
+        clearButtonID.addTarget(self, action: #selector(clearText(_:)), for: .touchUpInside)
     }
     
+    // text-field isEmpty? hidden
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField == IDTextField {
+            clearButtonPW.isHidden = true
+            showPasswordButton.isHidden = true
+            
+            clearButtonID.isHidden = textField.text?.isEmpty ?? true
+        } else if textField == PWTextField {
+            clearButtonID.isHidden = true
+            
+            clearButtonPW.isHidden = textField.text?.isEmpty ?? true
+            showPasswordButton.isHidden = textField.text?.isEmpty ?? true
+        }
+    }
     
     // MARK: - Button Actions
+    // log-in button
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         view.endEditing(true)
 
@@ -81,6 +128,7 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
             return
         }
         
+        // login -> main 화면 전환
         if let matchedUserInfo = users.first(where: { $0.id == userID && $0.password == password }) {
             print("Login successful: \(matchedUserInfo.userName)")
             let targetStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -103,6 +151,7 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
     }
 
 
+    // sign-up button
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
         guard let signUpVC = storyboard?.instantiateViewController(withIdentifier: "SignUpPage") else {
             return
@@ -112,16 +161,27 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
         present(signUpVC, animated: true, completion: nil)
     }
     
+    // password hidden button
     @objc func togglePasswordVisibility() {
         PWTextField.isSecureTextEntry.toggle()
         let imageName = PWTextField.isSecureTextEntry ? "eye.slash" : "eye"
         showPasswordButton.setImage(UIImage(systemName: imageName), for: .normal)
     }
     
+    // text-field clear
+    @objc func clearText(_ sender: UIButton) {
+        if sender == clearButtonPW {
+            PWTextField.text = ""
+        } else if sender == clearButtonID {
+            IDTextField.text = ""
+        }
+    }
     
-    // MARK: - Helper Methods
+    
+    // MARK: - Alert Message
     func showErrorAlert(message: String) {
         errorAlertLabel.text = message
+        
         UIView.animate(withDuration: 0.3) {
             self.errorAlertLabel.isHidden = false
             self.errorAlertLabel.alpha = 1.0
