@@ -71,6 +71,18 @@
                                     <action selector="passwordChanged:" destination="hQ7-ON-qdZ" eventType="editingChanged" id="mMo-IR-QYB"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFB-0s-X4L">
+                                <rect key="frame" x="295" y="413" width="25" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="tintColor" name="defaultsColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button" image="eye.slash" catalog="system"/>
+                                <state key="selected" image="eye" catalog="system"/>
+                                <connections>
+                                    <action selector="tappedPWEyeButton:" destination="hQ7-ON-qdZ" eventType="touchUpInside" id="N0U-A5-zOk"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lc-rg-9qs">
                                 <rect key="frame" x="45" y="655" width="303" height="50"/>
                                 <constraints>
@@ -90,6 +102,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="pwCheckChanged:" destination="hQ7-ON-qdZ" eventType="editingChanged" id="owC-R1-KRi"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpA-1M-8IJ">
                                 <rect key="frame" x="45" y="585" width="303" height="50"/>
@@ -132,7 +147,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUj-zo-6ul">
-                                <rect key="frame" x="352" y="493" width="25" height="34"/>
+                                <rect key="frame" x="295" y="493" width="25" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="tintColor" name="defaultsColor"/>
@@ -141,18 +156,6 @@
                                 <state key="selected" image="eye" catalog="system"/>
                                 <connections>
                                     <action selector="tappedPWCheckEyeButton:" destination="hQ7-ON-qdZ" eventType="touchUpInside" id="yIc-iO-5FB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFB-0s-X4L">
-                                <rect key="frame" x="352" y="409" width="25" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="tintColor" name="defaultsColor"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button" image="eye.slash" catalog="system"/>
-                                <state key="selected" image="eye" catalog="system"/>
-                                <connections>
-                                    <action selector="tappedPWEyeButton:" destination="hQ7-ON-qdZ" eventType="touchUpInside" id="N0U-A5-zOk"/>
                                 </connections>
                             </button>
                         </subviews>

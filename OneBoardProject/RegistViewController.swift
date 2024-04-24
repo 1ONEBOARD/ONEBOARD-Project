@@ -27,6 +27,7 @@ class RegistViewController: UIViewController {
     @IBOutlet weak var passwordCheckInformLabel: UILabel!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registTextFieldSetUp()
@@ -57,7 +58,8 @@ class RegistViewController: UIViewController {
         registIDTextField.text = ""
         registPasswordTextField.text = ""
         checkPasswordTextField.text = ""
-        
+        passwordEyeButton.isHidden = true
+        pwCheckEyeButton.isHidden = true
     }
     
     func resetLabelForm() {
@@ -70,8 +72,7 @@ class RegistViewController: UIViewController {
     }
     
     
-    //가리기 버튼
-    
+    // pw 가리기 버튼
     @IBOutlet weak var passwordEyeButton: UIButton!
     @IBAction func tappedPWEyeButton(_ sender: Any) {
         registPasswordTextField.isSecureTextEntry.toggle()
@@ -84,7 +85,6 @@ class RegistViewController: UIViewController {
         checkPasswordTextField.isSecureTextEntry.toggle()
         pwCheckEyeButton.isSelected.toggle()
     }
-    
     
     
     // TextField 유효성 검사
@@ -116,16 +116,18 @@ class RegistViewController: UIViewController {
     
     @IBAction func idChanged(_ sender: Any) {
         if let id = registIDTextField.text {
-            if let errorMessage = invalidID(id) {
-                idInformLabel.text = errorMessage
-                idInformLabel.textColor = .red
+            if !id.isEmpty {
+                if let errorMessage = invalidID(id) {
+                    idInformLabel.text = errorMessage
+                    idInformLabel.textColor = .red
+                }
+                else {
+                    idInformLabel.text = "사용 가능한 아이디입니다."
+                    idInformLabel.textColor = UIColor(named: "GcooColor")
+                }
             } else if id.isEmpty {
                 idInformLabel.text = "영문, 숫자를 포함한 8-16자"
                 idInformLabel.textColor = UIColor(named: "defaultsColor")
-            }
-            else {
-                idInformLabel.text = "사용 가능한 아이디입니다."
-                idInformLabel.textColor = UIColor(named: "GcooColor")
             }
         }
     }
@@ -142,20 +144,23 @@ class RegistViewController: UIViewController {
     
     @IBAction func passwordChanged(_ sender: Any) {
         if let password = registPasswordTextField.text {
-            if let errorMessage = invalidPassword(password) {
-                passwordInformLabel.text = errorMessage
-                passwordInformLabel.textColor = .red
+            if !password.isEmpty {
+                passwordEyeButton.isHidden = false
+                if let errorMessage = invalidPassword(password) {
+                    passwordInformLabel.text = errorMessage
+                    passwordInformLabel.textColor = .red
+                }
+                else {
+                    passwordInformLabel.text = "사용 가능한 비밀번호입니다."
+                    passwordInformLabel.textColor = UIColor(named: "GcooColor")
+                }
             } else if password.isEmpty {
                 passwordInformLabel.text = "영문, 숫자를 포함한 8-16자"
-                passwordInformLabel.textColor = UIColor(named: "defualtsColor")
-            }
-            else {
-                passwordInformLabel.text = "사용 가능한 비밀번호입니다."
-                passwordInformLabel.textColor = UIColor(named: "GcooColor")
+                passwordInformLabel.textColor = UIColor(named: "defaultsColor")
+                passwordEyeButton.isHidden = true
             }
         }
     }
-    
     
     func invalidPassword(_ value: String) -> String? {
         let reqularExpression = "[A-Za-z0-9]{8,16}"
@@ -165,6 +170,30 @@ class RegistViewController: UIViewController {
         }
         return nil
     }
+    
+    @IBAction func pwCheckChanged(_ sender: Any) {
+        if let pwCheck = checkPasswordTextField.text {
+            if pwCheck.isEmpty {
+                pwCheckEyeButton.isHidden = true
+            } else if !pwCheck.isEmpty {
+                pwCheckEyeButton.isHidden = false
+            }
+        }
+    }
+    
+    
+          //확인용
+//        func getData() {
+//            guard let context = self.persistentContainer?.viewContext else {return}
+//    
+//            let request = Users.fetchRequest()
+//            let user = try? context.fetch(request)
+//    
+//            print(user?[10].userID)
+//        }
+     
+    
+    
     
     // 회원가입 버튼 기능
     
@@ -218,18 +247,7 @@ class RegistViewController: UIViewController {
         
     }
     
-    
-    
-//     확인용
-//    func getData() {
-//        guard let context = self.persistentContainer?.viewContext else {return}
-//
-//        let request = Users.fetchRequest()
-//        let user = try? context.fetch(request)
-//
-//        print(user?.count)
-//    }
-//    
+
     
     
 }
