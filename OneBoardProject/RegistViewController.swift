@@ -21,6 +21,7 @@ class RegistViewController: UIViewController {
     @IBOutlet weak var checkPasswordTextField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
     
+    
     @IBOutlet weak var nameInformLabel: UILabel!
     @IBOutlet weak var idInformLabel: UILabel!
     @IBOutlet weak var passwordInformLabel: UILabel!
@@ -49,8 +50,6 @@ class RegistViewController: UIViewController {
         self.checkPasswordTextField.addTarget(self, action: #selector(self.TextFieldDidChanged(_:)), for: .editingChanged)
         
         resetForm()
-//        addUserInform()
-//        getData()
     }
     
     func resetForm() {
@@ -122,8 +121,9 @@ class RegistViewController: UIViewController {
                     idInformLabel.textColor = .red
                 }
                 else {
-                    idInformLabel.text = "사용 가능한 아이디입니다."
+                    idInformLabel.text = "아이디 중복을 확인해주세요."
                     idInformLabel.textColor = UIColor(named: "GcooColor")
+
                 }
             } else if id.isEmpty {
                 idInformLabel.text = "영문, 숫자를 포함한 8-16자"
@@ -158,6 +158,8 @@ class RegistViewController: UIViewController {
                 passwordInformLabel.text = "영문, 숫자를 포함한 8-16자"
                 passwordInformLabel.textColor = UIColor(named: "defaultsColor")
                 passwordEyeButton.isHidden = true
+                passwordCheckInformLabel.text = "비밀번호가 일치하지 않습니다."
+                passwordCheckInformLabel.textColor = .red
             }
         }
     }
@@ -175,6 +177,7 @@ class RegistViewController: UIViewController {
         if let pwCheck = checkPasswordTextField.text {
             if pwCheck.isEmpty {
                 pwCheckEyeButton.isHidden = true
+                passwordCheckInformLabel.isHidden = true
             } else if !pwCheck.isEmpty {
                 pwCheckEyeButton.isHidden = false
             }
@@ -182,18 +185,32 @@ class RegistViewController: UIViewController {
     }
     
     
-          //확인용
-//        func getData() {
-//            guard let context = self.persistentContainer?.viewContext else {return}
-//    
-//            let request = Users.fetchRequest()
-//            let user = try? context.fetch(request)
-//    
-//            print(user?[10].userID)
-//        }
-     
+    // 아이디 중복확인
+    func checkID() {
+        guard let context = self.persistentContainer?.viewContext else {return}
+        
+        let request = Users.fetchRequest()
+        let user = try? context.fetch(request)
+        
+        for id in user! {
+            if id.userID == registIDTextField.text {
+                let alert = UIAlertController(title: "중복된 아이디 입니다.", message: "다른 아이디를 사용해 주세요.", preferredStyle: .alert)
+                let confirm = UIAlertAction(title: "확인", style: .cancel)
+                idInformLabel.text = "중복된 아이디입니다."
+                idInformLabel.textColor = .red
+                
+                alert.addAction(confirm)
+                present(alert, animated: true ,completion: nil)
+            } else {
+                idInformLabel.text = "사용 가능한 아이디입니다."
+                idInformLabel.textColor = UIColor(named: "GcooColor")
+            }
+        }
+    }
     
-    
+    @IBAction func checkIDButton(_ sender: Any) {
+        checkID()
+    }
     
     // 회원가입 버튼 기능
     
@@ -244,10 +261,9 @@ class RegistViewController: UIViewController {
         userInform.userPassword = registPasswordTextField.text
         
         try? context.save()
-        
     }
     
-
+    
     
     
 }

@@ -50,7 +50,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="아이디를 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T0i-1A-eCa">
-                                <rect key="frame" x="45" y="325" width="303" height="50"/>
+                                <rect key="frame" x="45" y="325" width="238" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Dqp-9y-aRX"/>
                                 </constraints>
@@ -158,6 +158,19 @@
                                     <action selector="tappedPWCheckEyeButton:" destination="hQ7-ON-qdZ" eventType="touchUpInside" id="yIc-iO-5FB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ad-JZ-qKJ">
+                                <rect key="frame" x="295" y="325" width="53" height="50"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="tintColor" red="0.047058823530000002" green="0.72549019609999998" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="중복확인"/>
+                                <buttonConfiguration key="configuration" style="filled" title="중복확인">
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="checkIDButton:" destination="hQ7-ON-qdZ" eventType="touchUpInside" id="nP6-nB-V7q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hwm-y1-PbC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -171,6 +184,7 @@
                             <constraint firstItem="hwm-y1-PbC" firstAttribute="trailing" secondItem="3lc-rg-9qs" secondAttribute="trailing" constant="45" id="8Bu-8j-d3u"/>
                             <constraint firstItem="glb-uj-k3i" firstAttribute="leading" secondItem="hwm-y1-PbC" secondAttribute="leading" constant="45" id="9RV-yf-xzz"/>
                             <constraint firstItem="hwm-y1-PbC" firstAttribute="trailing" secondItem="iHS-KX-eXu" secondAttribute="trailing" constant="45" id="9d8-y6-4An"/>
+                            <constraint firstItem="4ad-JZ-qKJ" firstAttribute="leading" secondItem="T0i-1A-eCa" secondAttribute="trailing" constant="12" id="FuV-Pr-zVj"/>
                             <constraint firstItem="dAy-et-9ts" firstAttribute="top" secondItem="T0i-1A-eCa" secondAttribute="bottom" constant="30" id="GOu-es-FZD"/>
                             <constraint firstItem="slY-Rn-87g" firstAttribute="top" secondItem="iHS-KX-eXu" secondAttribute="bottom" id="Hq0-p1-pBV"/>
                             <constraint firstItem="jpA-1M-8IJ" firstAttribute="leading" secondItem="hwm-y1-PbC" secondAttribute="leading" constant="45" id="KDU-xL-kVJ"/>
@@ -188,13 +202,16 @@
                             <constraint firstItem="hwm-y1-PbC" firstAttribute="trailing" secondItem="UJc-TI-5Lr" secondAttribute="trailing" constant="45" id="gGc-Uq-7xi"/>
                             <constraint firstItem="dO2-tE-lBq" firstAttribute="top" secondItem="dAy-et-9ts" secondAttribute="bottom" id="iPh-b9-acZ"/>
                             <constraint firstItem="T0i-1A-eCa" firstAttribute="top" secondItem="iHS-KX-eXu" secondAttribute="bottom" constant="30" id="ikk-UP-J3Z"/>
+                            <constraint firstItem="dAy-et-9ts" firstAttribute="top" secondItem="4ad-JZ-qKJ" secondAttribute="bottom" constant="30" id="kVw-pu-xcZ"/>
                             <constraint firstItem="T0i-1A-eCa" firstAttribute="leading" secondItem="hwm-y1-PbC" secondAttribute="leading" constant="45" id="ne1-GB-9rs"/>
                             <constraint firstItem="3lc-rg-9qs" firstAttribute="top" secondItem="jpA-1M-8IJ" secondAttribute="bottom" constant="20" id="p6v-iI-1rF"/>
+                            <constraint firstItem="4ad-JZ-qKJ" firstAttribute="top" secondItem="iHS-KX-eXu" secondAttribute="bottom" constant="30" id="rJ3-H3-Oki"/>
                             <constraint firstItem="dO2-tE-lBq" firstAttribute="leading" secondItem="hwm-y1-PbC" secondAttribute="leading" constant="45" id="sXt-CT-1Yh"/>
                             <constraint firstItem="UJc-TI-5Lr" firstAttribute="top" secondItem="dO2-tE-lBq" secondAttribute="bottom" constant="10" id="vWi-Y5-Dfq"/>
                             <constraint firstItem="DME-zh-Ca8" firstAttribute="leading" secondItem="hwm-y1-PbC" secondAttribute="leading" constant="45" id="vav-Kd-R3Z"/>
                             <constraint firstItem="yRG-gM-JxL" firstAttribute="leading" secondItem="hwm-y1-PbC" secondAttribute="leading" constant="45" id="xtc-Na-ATK"/>
-                            <constraint firstItem="hwm-y1-PbC" firstAttribute="trailing" secondItem="T0i-1A-eCa" secondAttribute="trailing" constant="45" id="yG1-TZ-MLn"/>
+                            <constraint firstItem="hwm-y1-PbC" firstAttribute="trailing" secondItem="T0i-1A-eCa" secondAttribute="trailing" constant="110" id="yG1-TZ-MLn"/>
+                            <constraint firstItem="hwm-y1-PbC" firstAttribute="trailing" secondItem="4ad-JZ-qKJ" secondAttribute="trailing" constant="45" id="zBD-Pr-pFZ"/>
                         </constraints>
                     </view>
                     <connections>
