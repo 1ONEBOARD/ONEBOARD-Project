@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0BE6C0DA2BD64E0000B78DC6 /* LoginPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE6C0D92BD64E0000B78DC6 /* LoginPageController.swift */; };
 		0BE6C0DC2BD64E1000B78DC6 /* LoginPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6C0DB2BD64E1000B78DC6 /* LoginPage.storyboard */; };
+		2E38654F2BDA93E700EF80B9 /* String+DataConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E38654E2BDA93E700EF80B9 /* String+DataConversion.swift */; };
+		2E3865512BDA9B5F00EF80B9 /* KickboardDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3865502BDA9B5F00EF80B9 /* KickboardDataManager.swift */; };
 		2E695CF82BD7463D00D8263E /* RentalListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E695CF72BD7463D00D8263E /* RentalListTableViewCell.xib */; };
 		2E695CF92BD7463D00D8263E /* RentalListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E695CF62BD7463D00D8263E /* RentalListTableViewCell.swift */; };
 		2E695CFB2BD74EB500D8263E /* Rental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E695CFA2BD74EB500D8263E /* Rental.swift */; };
@@ -36,6 +38,8 @@
 /* Begin PBXFileReference section */
 		0BE6C0D92BD64E0000B78DC6 /* LoginPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageController.swift; sourceTree = "<group>"; };
 		0BE6C0DB2BD64E1000B78DC6 /* LoginPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginPage.storyboard; sourceTree = "<group>"; };
+		2E38654E2BDA93E700EF80B9 /* String+DataConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DataConversion.swift"; sourceTree = "<group>"; };
+		2E3865502BDA9B5F00EF80B9 /* KickboardDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KickboardDataManager.swift; sourceTree = "<group>"; };
 		2E695CF62BD7463D00D8263E /* RentalListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalListTableViewCell.swift; sourceTree = "<group>"; };
 		2E695CF72BD7463D00D8263E /* RentalListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RentalListTableViewCell.xib; sourceTree = "<group>"; };
 		2E695CFA2BD74EB500D8263E /* Rental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rental.swift; sourceTree = "<group>"; };
@@ -57,7 +61,7 @@
 		2EE26A072BDA12E300D4CB1B /* UserCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoreDataManager.swift; sourceTree = "<group>"; };
 		2EE26A0D2BDA56D200D4CB1B /* RentalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalDataManager.swift; sourceTree = "<group>"; };
 		2EE26A0F2BDA571300D4CB1B /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
-		622F02D02BD66F4200E9BF28 /* RegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegistViewController.swift; path = ../RegistViewController.swift; sourceTree = "<group>"; };
+		622F02D02BD66F4200E9BF28 /* RegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistViewController.swift; sourceTree = "<group>"; };
 		B66752112BD66A76003ADA3E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B66752132BD66AB7003ADA3E /* KickboardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KickboardData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +77,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E3865522BDA9D6D00EF80B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2ED8C4302BD91F72008755C0 /* Main.storyboard */,
+				0BE6C0DB2BD64E1000B78DC6 /* LoginPage.storyboard */,
+				2EE26A052BD93F3F00D4CB1B /* UserStoryboard.storyboard */,
+				2E908AD12BD68B6C00D54773 /* UserDefaultTableViewCell.xib */,
+				2E695CF72BD7463D00D8263E /* RentalListTableViewCell.xib */,
+				2E908AC32BD64A7800D54773 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2E3865532BDA9D7600EF80B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2E695CFC2BD74ECF00D8263E /* UserDefault.swift */,
+				2EE26A0F2BDA571300D4CB1B /* UserDefaultsManager.swift */,
+				2EE26A072BDA12E300D4CB1B /* UserCoreDataManager.swift */,
+				2E695CFA2BD74EB500D8263E /* Rental.swift */,
+				2EE26A0D2BDA56D200D4CB1B /* RentalDataManager.swift */,
+				B66752132BD66AB7003ADA3E /* KickboardData.swift */,
+				2E3865502BDA9B5F00EF80B9 /* KickboardDataManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2E3865542BDA9D7E00EF80B9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2E908AB92BD64A7500D54773 /* ViewController.swift */,
+				0BE6C0D92BD64E0000B78DC6 /* LoginPageController.swift */,
+				622F02D02BD66F4200E9BF28 /* RegistViewController.swift */,
+				B66752112BD66A76003ADA3E /* MapViewController.swift */,
+				2E908ACE2BD64BF500D54773 /* UserViewController.swift */,
+				2E695CFE2BD75F4B00D8263E /* UserViewController+TableView.swift */,
+				2E908AD02BD68B6C00D54773 /* UserDefaultTableViewCell.swift */,
+				2E695CF62BD7463D00D8263E /* RentalListTableViewCell.swift */,
+				2E38654E2BDA93E700EF80B9 /* String+DataConversion.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		2E908AA92BD64A7500D54773 = {
 			isa = PBXGroup;
 			children = (
@@ -94,26 +141,9 @@
 			children = (
 				2E908AB52BD64A7500D54773 /* AppDelegate.swift */,
 				2E908AB72BD64A7500D54773 /* SceneDelegate.swift */,
-				2E908AB92BD64A7500D54773 /* ViewController.swift */,
-				2EE26A072BDA12E300D4CB1B /* UserCoreDataManager.swift */,
-				2E695CFC2BD74ECF00D8263E /* UserDefault.swift */,
-				2EE26A0F2BDA571300D4CB1B /* UserDefaultsManager.swift */,
-				2E695CFA2BD74EB500D8263E /* Rental.swift */,
-				2EE26A0D2BDA56D200D4CB1B /* RentalDataManager.swift */,
-				B66752132BD66AB7003ADA3E /* KickboardData.swift */,
-				0BE6C0D92BD64E0000B78DC6 /* LoginPageController.swift */,
-				622F02D02BD66F4200E9BF28 /* RegistViewController.swift */,
-				B66752112BD66A76003ADA3E /* MapViewController.swift */,
-				2E908ACE2BD64BF500D54773 /* UserViewController.swift */,
-				2E695CFE2BD75F4B00D8263E /* UserViewController+TableView.swift */,
-				2E908AD02BD68B6C00D54773 /* UserDefaultTableViewCell.swift */,
-				2E695CF62BD7463D00D8263E /* RentalListTableViewCell.swift */,
-				2ED8C4302BD91F72008755C0 /* Main.storyboard */,
-				0BE6C0DB2BD64E1000B78DC6 /* LoginPage.storyboard */,
-				2EE26A052BD93F3F00D4CB1B /* UserStoryboard.storyboard */,
-				2E908AD12BD68B6C00D54773 /* UserDefaultTableViewCell.xib */,
-				2E695CF72BD7463D00D8263E /* RentalListTableViewCell.xib */,
-				2E908AC32BD64A7800D54773 /* LaunchScreen.storyboard */,
+				2E3865532BDA9D7600EF80B9 /* Model */,
+				2E3865522BDA9D6D00EF80B9 /* View */,
+				2E3865542BDA9D7E00EF80B9 /* Controller */,
 				2E908AC12BD64A7800D54773 /* Assets.xcassets */,
 				2E908AC62BD64A7800D54773 /* Info.plist */,
 				2E908ABE2BD64A7500D54773 /* OneBoardProject.xcdatamodeld */,
@@ -198,6 +228,7 @@
 			files = (
 				622F02D22BD66F4200E9BF28 /* RegistViewController.swift in Sources */,
 				0BE6C0DA2BD64E0000B78DC6 /* LoginPageController.swift in Sources */,
+				2E38654F2BDA93E700EF80B9 /* String+DataConversion.swift in Sources */,
 				2EE26A102BDA571400D4CB1B /* UserDefaultsManager.swift in Sources */,
 				2E908AD32BD68B6C00D54773 /* UserDefaultTableViewCell.swift in Sources */,
 				2E695CFF2BD75F4B00D8263E /* UserViewController+TableView.swift in Sources */,
@@ -209,6 +240,7 @@
 				2E695CFD2BD74ECF00D8263E /* UserDefault.swift in Sources */,
 				2EE26A082BDA12E300D4CB1B /* UserCoreDataManager.swift in Sources */,
 				2E695CFB2BD74EB500D8263E /* Rental.swift in Sources */,
+				2E3865512BDA9B5F00EF80B9 /* KickboardDataManager.swift in Sources */,
 				2E695CF92BD7463D00D8263E /* RentalListTableViewCell.swift in Sources */,
 				2EE26A0E2BDA56D200D4CB1B /* RentalDataManager.swift in Sources */,
 				B66752122BD66A76003ADA3E /* MapViewController.swift in Sources */,

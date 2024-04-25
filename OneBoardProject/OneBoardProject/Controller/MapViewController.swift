@@ -10,18 +10,10 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-    var kickboardList = [
-            Kickboard(kickBoardID: "Pro", kickBoardNumber: 101, kickBoardLocation: (37.5023, 127.0451), kickBoardStatus: false, pricePerMinute: 180),
-            Kickboard(kickBoardID: "Pro", kickBoardNumber: 102, kickBoardLocation: (37.5023, 127.0441), kickBoardStatus: false, pricePerMinute: 180),
-            Kickboard(kickBoardID: "Pro", kickBoardNumber: 103, kickBoardLocation: (37.5024, 127.0455), kickBoardStatus: false, pricePerMinute: 180),
-            Kickboard(kickBoardID: "Pro", kickBoardNumber: 104, kickBoardLocation: (37.5025, 127.0448), kickBoardStatus: false, pricePerMinute: 180),
-            Kickboard(kickBoardID: "Basic", kickBoardNumber: 105, kickBoardLocation: (37.5026, 127.0441), kickBoardStatus: false, pricePerMinute: 150),
-            Kickboard(kickBoardID: "Basic", kickBoardNumber: 106, kickBoardLocation: (37.5027, 127.0443), kickBoardStatus: false, pricePerMinute: 150),
-            Kickboard(kickBoardID: "Basic", kickBoardNumber: 107, kickBoardLocation: (37.5028, 127.0451), kickBoardStatus: false, pricePerMinute: 150)
-            ]
-    
     var mapView: MKMapView!
     let manager = CLLocationManager()
+    var kickboardManager = KickboardDataManager()
+    var kickboardList = [Kickboard]()
     
     var myLocationButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -47,9 +39,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupKickboardData()
         setupMapView()
         setupButton()
         setupBackButton()
+    }
+    
+    func setupKickboardData() {
+        kickboardList = kickboardManager.getKickboardData()
     }
     
     func setupMapView() {
@@ -89,7 +86,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.navigationController?.navigationBar.backIndicatorImage = backImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
 
-        // 백 버튼 타이틀 제거
+        // Back 버튼 타이틀 제거
         let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         backButton.tintColor = .black
         self.navigationItem.backBarButtonItem = backButton
