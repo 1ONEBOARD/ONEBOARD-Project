@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23D60" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="KickboardRental" representedClassName="KickboardRental" syncable="YES" codeGenerationType="class">
+        <attribute name="kickBoardID" optional="YES" attributeType="String"/>
+        <attribute name="kickBoardNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="kickBoardPrice" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rentalPrice" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rentalStartTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="rentalTotalTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Users" representedClassName="Users" syncable="YES" codeGenerationType="class">
         <attribute name="userID" optional="YES" attributeType="String"/>
         <attribute name="userName" optional="YES" attributeType="String"/>
         <attribute name="userPassword" optional="YES" attributeType="String"/>
-        <attribute name="userRentalList" optional="YES" attributeType="Transformable"/>
-        <attribute name="userStatus" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
 </model>

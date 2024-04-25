@@ -11,6 +11,7 @@ import UIKit
 extension UserViewController: UITableViewDelegate, UITableViewDataSource {
     
     
+    // MARK: - TableView 초기 설정
     func setUserTableView() {
         
         userTableView.delegate = self
@@ -22,34 +23,41 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
         userTableView.register(nib1, forCellReuseIdentifier: "userDefaultCell")
         userTableView.register(nib2, forCellReuseIdentifier: "rentalListCell")
     }
+     
     
-    
-    func setUserDefaultCell(_ tableView: UITableView, 
+    // MARK: - 유저 정보 cell 설정
+    func setUserDefaultCell(_ tableView: UITableView,
                             indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "userDefaultCell", for: indexPath) as! UserDefaultTableViewCell
-        let cellConfigure: [(String,String)] = [("이름", userData.userName), ("아이디", userData.id)]
+        let cellConfigure: [(String,String)] = [("이름", userName), ("아이디", userID)]
         cell.firstLabel.text = cellConfigure[indexPath.row].0
         cell.LastLabel.text = cellConfigure[indexPath.row].1
+        
         return cell
     }
     
     
+    // MARK: - 유저 킥보드 렌탈 리스트 cell 설정
     func setUserRentalListCell(_ tableView: UITableView,
                                indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "rentalListCell", for: indexPath) as! RentalListTableViewCell
-        cell.kickBoardIDLabel.text = userData.rentalList[indexPath.row].kickBoardID
-        cell.kickBoardNumberLabel.text = "\(userData.rentalList[indexPath.row].kickBoardNumber)"
-        cell.rentalPriceLabel.text = setPriceLabel(price: userData.rentalList[indexPath.row].rentalPrice)
-        cell.rentalStartTimeLabel.text = userData.rentalList[indexPath.row].rentalStartTime
-        if let rentalTotalTime = userData.rentalList[indexPath.row].rentalTotalTime {
-            cell.rentalTimeLabel.text = "\(rentalTotalTime)분"
-        }
+        
+        // 렌탈 리스트에서 값을 가져오는 함수 적어야함.
+        
+//        cell.kickBoardIDLabel.text = userData.rentalList[indexPath.row].kickBoardID
+//        cell.kickBoardNumberLabel.text = "\(userData.rentalList[indexPath.row].kickBoardNumber)"
+//        cell.rentalPriceLabel.text = setPriceLabel(price: userData.rentalList[indexPath.row].rentalPrice)
+//        cell.rentalStartTimeLabel.text = userData.rentalList[indexPath.row].rentalStartTime
+//        if let rentalTotalTime = userData.rentalList[indexPath.row].rentalTotalTime {
+//            cell.rentalTimeLabel.text = "\(rentalTotalTime)분"
+//        }
         return cell
     }
     
     
+    // MARK: - 금액 천단위 설정
     func setPriceLabel(price: Int) -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
@@ -62,7 +70,7 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         
         // 대여중이면 section 수 3개 / 대여중이 아니라면 section 수 2개
-        if userData.status {
+        if userStatus {
             return 3
         }else {
             return 2
@@ -70,19 +78,20 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    func tableView(_ tableView: UITableView, 
+    // MARK: - tableView 헤더 높이 설정
+    func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
         return 45
     }
 
     
-    // 섹션 푸터의 높이를 설정
-    func tableView(_ tableView: UITableView, 
+    // MARK: - tableView 푸터 높이 설정
+    func tableView(_ tableView: UITableView,
                    heightForFooterInSection section: Int) -> CGFloat {
         return 5
     }
 
-    
+    // MARK: - tableView 섹션에 따른 header UI 설정
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
         
@@ -102,7 +111,7 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
         headerBorderView.backgroundColor = .black
         
         // 대여중이면 section 수 3개 / 대여중이 아니라면 section 수 2개
-        if userData.status {
+        if userStatus {
             switch section {
             case 0: headerLabel.text = "프로필"
             case 1: headerLabel.text = "대여중"
@@ -129,17 +138,17 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
                    numberOfRowsInSection section: Int) -> Int {
         
         // 대여중이면 section 수 3개 / 대여중이 아니라면 section 수 2개
-        if userData.status {
+        if userStatus {
             switch section {
             case 0: 2
             case 1: 1
-            case 2: userData.rentalList.count
+            case 2: 0 // 수정
             default: 0
             }
         }else {
             switch section {
             case 0: 2
-            case 1: userData.rentalList.count
+            case 1: 0 // 수정
             default: 0
             }
         }
@@ -152,19 +161,27 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // 대여중이면 section 수 3개 / 대여중이 아니라면 section 수 2개
-        if userData.status {
+        if userStatus {
             switch indexPath.section {
             case 0:
                 return setUserDefaultCell(tableView, indexPath: indexPath)
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "rentalListCell", for: indexPath) as! RentalListTableViewCell
-                cell.kickBoardIDLabel.text = currentRental.kickBoardID
-                cell.kickBoardNumberLabel.text = "\(currentRental.kickBoardNumber)"
-                cell.rentalPriceLabel.text = setPriceLabel(price: currentRental.rentalPrice)
-                cell.rentalStartTimeLabel.text = currentRental.rentalStartTime
-                if let rentalTotalTime = currentRental.rentalTotalTime {
-                    cell.rentalTimeLabel.text = "\(rentalTotalTime)분"
-                }
+                
+                // 현재 킥보드 대여 상태
+                cell.kickBoardIDLabel.text = "\(userDefaultsManager.getUserDefaultsKickboardID())"
+                cell.kickBoardNumberLabel.text = "\(userDefaultsManager.getUserDefaultsKickboardNumber())"
+                
+                // 현재 시간 - 킥보드를 빌린 시간 함수를 계산하여 setPriceLabel에 넣어야함.
+                // cell.rentalPriceLabel.text = setPriceLabel(price: currentRental.rentalPrice)
+                
+                cell.rentalStartTimeLabel.text = "\(userDefaultsManager.getUserDefaultsKickboardStartTime())"
+                
+                // 현재 시간 - 킥보드를 빌린 시간 함수를 계산하여 rentalTotalTime에 넣어야함.
+//                if let rentalTotalTime = currentRental.rentalTotalTime {
+//                    cell.rentalTimeLabel.text = "\(rentalTotalTime)분"
+//                }
+                
                 return cell
             case 2:
                 return setUserRentalListCell(tableView, indexPath: indexPath)

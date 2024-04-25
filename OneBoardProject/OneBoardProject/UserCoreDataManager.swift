@@ -19,8 +19,6 @@ struct UserCoreDataManager {
         (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     }
     
-    private var userID: String = ""
-    
     func setUserData(userName: String, userID: String, userPassword: String) {
         
         guard let context = self.persistentContainer?.viewContext else { return }
@@ -29,7 +27,6 @@ struct UserCoreDataManager {
         userInform.userName = userName
         userInform.userID = userID
         userInform.userPassword = userPassword
-        userInform.userStatus = false
         
         try? context.save()
     }
@@ -43,7 +40,15 @@ struct UserCoreDataManager {
         return user
     }
     
-    mutating func setUserID(userID: String) {
-        self.userID = userID
+    func getUserNameData(userID: String) -> String {
+        guard let context = self.persistentContainer?.viewContext else { return "" }
+        
+        let request = Users.fetchRequest()
+        request.predicate = NSPredicate(format: "userID == %@", userID)
+        
+        let results = try? context.fetch(request)
+        guard let results = results, let userName = results[0].userName else { return "" }
+        
+        return userName
     }
 }

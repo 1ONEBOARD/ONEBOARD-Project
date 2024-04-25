@@ -6,9 +6,6 @@
 import UIKit
 
 class LoginPageController: UIViewController, UITextFieldDelegate {
-  
-    let loggedUserKey = "lastLoggedInUser"
-    var userCoreDataManager = UserCoreDataManager.shared
     
     // MARK: - Outlets
     @IBOutlet weak var IDTextField: UITextField!
@@ -25,14 +22,17 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
     let clearButtonPW = UIButton(type: .custom)
     
     var autoLoginEnabled = false
-    
-    
+    var userCoreDataManager = UserCoreDataManager.shared
+    var userDefaultsManager = UserDefaultsManager.shared
+
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let lastLoggedInUser = UserDefaults.standard.string(forKey: loggedUserKey) {
-            print("UserDefaults-user: \(lastLoggedInUser)")
+        print(UserDefaults.standard.bool(forKey: UserDefault.autoLoginEnabled.rawValue))
+        
+        if UserDefaults.standard.bool(forKey: UserDefault.autoLoginEnabled.rawValue) {
+            print("UserDefaults-user")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                 self.navigateToMainPage()
             }
@@ -98,6 +98,7 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(autoLoginCheckTapped))
             autoLoginCheck.isUserInteractionEnabled = true
             autoLoginCheck.addGestureRecognizer(tapGesture)
+            
         }
     }
     
@@ -134,15 +135,12 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
         }
         
         // login -> main 화면 전환
-    
         guard let users = userCoreDataManager.getUserData() else { return }
         
         if users.filter({ $0.userID == userID && $0.userPassword == userPassword }).count != 0 {
             print("Login successful: \(userID)")
-            if autoLoginEnabled {
-                userCoreDataManager.setUserID(userID: userID)
-                UserDefaults.standard.set(userID, forKey: self.loggedUserKey)
-            }
+            let userName = userCoreDataManager.getUserNameData(userID: userID)
+            userDefaultsManager.setUserDefaults(userID: userID, userName: userName, autoLoginEnabled: autoLoginEnabled)
             navigateToMainPage()
         } else {
             print("아이디 또는 비밀번호가 일치하지 않습니다")
@@ -196,6 +194,7 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
                 self.autoLoginCheck.image = UIImage(systemName: "checkmark.circle.fill")
                 self.autoLoginCheck.tintColor = UIColor(named: "GcooColor")
                 self.autoLoginEnabled = true
+                
             }
         }, completion: nil)
     }
