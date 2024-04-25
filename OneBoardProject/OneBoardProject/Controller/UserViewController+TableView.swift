@@ -23,7 +23,7 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
         userTableView.register(nib1, forCellReuseIdentifier: "userDefaultCell")
         userTableView.register(nib2, forCellReuseIdentifier: "rentalListCell")
     }
-     
+    
     
     // MARK: - 유저 정보 cell 설정
     func setUserDefaultCell(_ tableView: UITableView,
@@ -44,15 +44,16 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "rentalListCell", for: indexPath) as! RentalListTableViewCell
         
-        // 렌탈 리스트에서 값을 가져오는 함수 적어야함.
+        let rentalList = rentalDataManager.getTodoListCoreData(userID: userID)
+        cell.kickBoardIDLabel.text = rentalList[indexPath.row].kickBoardID
+        cell.kickBoardNumberLabel.text = "\(rentalList[indexPath.row].kickBoardNumber)"
+        cell.rentalPriceLabel.text = setPriceLabel(price: Int(rentalList[indexPath.row].rentalPrice))
+        var rentalStartTimeLabel = ""
+        guard let startTime = rentalList[indexPath.row].rentalStartTime else { return cell }
+        rentalStartTimeLabel.setDate(startTime)
+        cell.rentalStartTimeLabel.text = rentalStartTimeLabel
+        cell.rentalTimeLabel.text = "\(Int(rentalList[indexPath.row].rentalTotalTime))분"
         
-//        cell.kickBoardIDLabel.text = userData.rentalList[indexPath.row].kickBoardID
-//        cell.kickBoardNumberLabel.text = "\(userData.rentalList[indexPath.row].kickBoardNumber)"
-//        cell.rentalPriceLabel.text = setPriceLabel(price: userData.rentalList[indexPath.row].rentalPrice)
-//        cell.rentalStartTimeLabel.text = userData.rentalList[indexPath.row].rentalStartTime
-//        if let rentalTotalTime = userData.rentalList[indexPath.row].rentalTotalTime {
-//            cell.rentalTimeLabel.text = "\(rentalTotalTime)분"
-//        }
         return cell
     }
     
@@ -171,16 +172,9 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
                 // 현재 킥보드 대여 상태
                 cell.kickBoardIDLabel.text = "\(userDefaultsManager.getUserDefaultsKickboardID())"
                 cell.kickBoardNumberLabel.text = "\(userDefaultsManager.getUserDefaultsKickboardNumber())"
-                
-                // 현재 시간 - 킥보드를 빌린 시간 함수를 계산하여 setPriceLabel에 넣어야함.
-                // cell.rentalPriceLabel.text = setPriceLabel(price: currentRental.rentalPrice)
-                
+                cell.rentalPriceLabel.text = setPriceLabel(price: userDefaultsManager.calculateKickboardRentalPrice())
                 cell.rentalStartTimeLabel.text = "\(userDefaultsManager.getUserDefaultsKickboardStartTime())"
-                
-                // 현재 시간 - 킥보드를 빌린 시간 함수를 계산하여 rentalTotalTime에 넣어야함.
-//                if let rentalTotalTime = currentRental.rentalTotalTime {
-//                    cell.rentalTimeLabel.text = "\(rentalTotalTime)분"
-//                }
+                cell.rentalTimeLabel.text = "\(userDefaultsManager.calculateKickboardTotalTime())분"
                 
                 return cell
             case 2:

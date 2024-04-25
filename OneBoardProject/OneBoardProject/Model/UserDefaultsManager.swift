@@ -57,7 +57,13 @@ struct UserDefaultsManager {
     }
     
     func calculateKickboardTotalTime() -> Int {
-        //return now() - getUserDefaultsKickboardStartTime()
-        return 0
+        guard let start = getUserDefaultsKickboardStartTime().toDate() else {
+            return 0
+        }
+        return Int(Date().timeIntervalSince(start) / 60)
+    }
+    
+    func calculateKickboardRentalPrice() -> Int {
+        return calculateKickboardTotalTime() * 180
     }
 }
