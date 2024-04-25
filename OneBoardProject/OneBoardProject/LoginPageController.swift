@@ -6,21 +6,9 @@
 import UIKit
 
 class LoginPageController: UIViewController, UITextFieldDelegate {
-
-    // MARK: - User Info
-    struct UserInfo {
-        var userName: String
-        var id: String
-        var password: String
-    }
-    
-    let users: [UserInfo] = [
-         UserInfo(userName: "user1", id: "userid1", password: "userpw1"),
-         UserInfo(userName: "user2", id: "userid2", password: "userpw2"),
-         UserInfo(userName: "user3", id: "userid3", password: "userpw3")
-    ]
-    
+  
     let loggedUserKey = "lastLoggedInUser"
+    var userCoreDataManager = UserCoreDataManager.shared
     
     // MARK: - Outlets
     @IBOutlet weak var IDTextField: UITextField!
@@ -139,16 +127,20 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        guard let password = PWTextField.text, !password.isEmpty else {
+        guard let userPassword = PWTextField.text, !userPassword.isEmpty else {
             print("Please enter a password")
             showErrorAlert(message: "비밀번호를 입력해 주세요.")
             return
         }
         
         // login -> main 화면 전환
-        if let matchedUserInfo = users.first(where: { $0.id == userID && $0.password == password }) {
-            print("Login successful: \(matchedUserInfo.userName)")
+    
+        guard let users = userCoreDataManager.getUserData() else { return }
+        
+        if users.filter({ $0.userID == userID && $0.userPassword == userPassword }).count != 0 {
+            print("Login successful: \(userID)")
             if autoLoginEnabled {
+                userCoreDataManager.setUserID(userID: userID)
                 UserDefaults.standard.set(userID, forKey: self.loggedUserKey)
             }
             navigateToMainPage()
@@ -158,7 +150,7 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
         }
         
         print("userID: \(userID)")
-        print("password: \(password)")
+        print("password: \(userPassword)")
     }
 
 
@@ -174,12 +166,14 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
         present(signUpVC, animated: true, completion: nil)
     }
     
+    
     // password hidden button
     @objc func togglePasswordVisibility() {
         PWTextField.isSecureTextEntry.toggle()
         let imageName = PWTextField.isSecureTextEntry ? "eye.slash" : "eye"
         showPasswordButton.setImage(UIImage(systemName: imageName), for: .normal)
     }
+    
     
     // text-field clear
     @objc func clearText(_ sender: UIButton) {
@@ -189,6 +183,7 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
             IDTextField.text = ""
         }
     }
+    
     
     // auto-login check
     @objc func autoLoginCheckTapped() {
@@ -229,6 +224,7 @@ class LoginPageController: UIViewController, UITextFieldDelegate {
             self.view.layoutIfNeeded()
         }
     }
+    
     
     private func navigateToMainPage() {
         let targetStoryboard = UIStoryboard(name: "UserStoryboard", bundle: nil)

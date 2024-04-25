@@ -11,19 +11,25 @@ import UIKit
 
 struct UserCoreDataManager {
     
+    static let shared = UserCoreDataManager()
+    private init() {}
+    
     // PersistentContainer에 접근
-    var persistentContainer: NSPersistentContainer? {
+    private var persistentContainer: NSPersistentContainer? {
         (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     }
     
+    private var userID: String = ""
+    
     func setUserData(userName: String, userID: String, userPassword: String) {
-        guard let context = self.persistentContainer?.viewContext else {return}
         
+        guard let context = self.persistentContainer?.viewContext else { return }
         let userInform = Users(context: context)
         
         userInform.userName = userName
         userInform.userID = userID
         userInform.userPassword = userPassword
+        userInform.userStatus = false
         
         try? context.save()
     }
@@ -35,5 +41,9 @@ struct UserCoreDataManager {
         let user = try? context.fetch(request)
         
         return user
+    }
+    
+    mutating func setUserID(userID: String) {
+        self.userID = userID
     }
 }

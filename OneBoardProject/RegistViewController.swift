@@ -25,7 +25,7 @@ class RegistViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     
-    var userCoreDataManager = UserCoreDataManager()
+    var userCoreDataManager = UserCoreDataManager.shared
     
     // MARK: - viewDidLoad
     
