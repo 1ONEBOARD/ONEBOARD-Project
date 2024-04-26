@@ -57,10 +57,42 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.manager.requestWhenInUseAuthorization()
         self.mapView.delegate = self
         
+        // 대여중일때 맵뷰에서 위치 선택하여 반납
+        if UserDefaults.standard.bool(forKey: "userStatus") == true {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMapTap(_:)))
+            mapView.addGestureRecognizer(tapGesture)
+        }
+        
         let center = CLLocationCoordinate2D(latitude: 37.5024, longitude: 127.0445)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
         mapView.setRegion(region, animated: true)
         createAnnotaion()
+    }
+    
+    @objc func handleMapTap(_ gestureReconizer: UITapGestureRecognizer) {
+        if gestureReconizer.state != .ended {
+            return
+        }
+        let touchLocation = gestureReconizer.location(in: mapView)
+        let locationCoordinate = mapView.convert(touchLocation, toCoordinateFrom: mapView)
+        
+        let alert = UIAlertController(title: "반납하기", message: "이곳에 반납하시겠습니까?", preferredStyle: .alert)
+        let success = UIAlertAction(title: "확인", style: .default) { action in
+            self.addAnnotationAtCoordinate(locationCoordinate)
+            UserDefaults.standard.setValue(false, forKey: "userStatus")
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+             
+        alert.addAction(success)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func addAnnotationAtCoordinate(_ coordinate: CLLocationCoordinate2D) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
     }
     
     func createAnnotaion() {
@@ -71,13 +103,27 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotations(annotations)
     }
     
+    // 맵뷰 줌 아웃 제한
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        let maxRegionSpan: CLLocationDegrees = 0.01
+        var span = mapView.region.span
+
+        span.latitudeDelta = min(span.latitudeDelta, maxRegionSpan)
+        span.longitudeDelta = min(span.longitudeDelta, maxRegionSpan)
+
+        if mapView.region.span.latitudeDelta > maxRegionSpan || mapView.region.span.longitudeDelta > maxRegionSpan {
+            let newRegion = MKCoordinateRegion(center: mapView.region.center, span: span)
+            mapView.setRegion(newRegion, animated: true)
+        }
+    }
+    
     func setupButton() {
         view.addSubview(buttonStackView)
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            buttonStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60)
+            buttonStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            buttonStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -60)
         ])
     }
     
@@ -100,7 +146,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @objc func myLocationButtonTapped() {
-        mapView.setUserTrackingMode(.follow, animated: true)
+        let center = CLLocationCoordinate2D(latitude: 37.5024, longitude: 127.0445)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+        mapView.setRegion(region, animated: true)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -111,7 +159,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView?.canShowCallout = true
+            annotationView?.canShowCallout = false
             annotationView?.image = UIImage(named: "location")
             
             let button = UIButton(type: .detailDisclosure)
@@ -123,6 +171,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: - annotation 선택시 모달창 띄움
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        buttonStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -300).isActive = true
+        
+        UIView.animate(withDuration: 0.5) {
+            self.buttonStackView.layoutIfNeeded()
+        }
+        
+        view.image = UIImage(named: "locationRed")
+        
         let storyboard = UIStoryboard(name: "UserStoryboard", bundle: nil)
         if let modalViewController = storyboard.instantiateViewController(withIdentifier: "RentalViewController") as? RentalViewController {
             modalViewController.modalPresentationStyle = .overCurrentContext
@@ -130,8 +186,25 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                   let kick = annotation.subtitle,
                   let kickNum = kick else { return }
             modalViewController.rentalKickboardData = kickboardManager.getKickboardWithNumber(kickboardNumber: Int(kickNum) ?? 0)
+            
+            modalViewController.rentalmodalReady = { modal in
+                modal.deleteAnnotation = {
+                    if let annotation = view.annotation {
+                        UIView.animate(withDuration: 0.2, animations: { view.alpha = 0 }) { (finished) in
+                            if finished { 
+                                mapView.removeAnnotation(annotation)
+                                view.alpha = 1
+                            }
+                        }
+                    }
+                }
+            }
             self.present(modalViewController, animated: true, completion: nil)
         }
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+            view.image = UIImage(named: "location")
     }
 }
 
