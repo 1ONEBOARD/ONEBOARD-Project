@@ -10,6 +10,7 @@ import UIKit
 class RentalViewController: UIViewController {
 
     var rentalmodal: RentalModal!
+    var rentalmodalReady: ((RentalModal) -> Void)?
     var rentalKickboardData: Kickboard?
     
     override func viewDidLoad() {
@@ -17,7 +18,7 @@ class RentalViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         setupRentalModal()
-        
+        rentalmodalReady?(rentalmodal)
         rentalmodal.cancelAction = { [weak self] in
             self?.dismiss(animated: true, completion: nil)
         }

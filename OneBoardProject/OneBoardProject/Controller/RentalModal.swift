@@ -24,6 +24,7 @@ class RentalModal: UIView {
     var cancelAction: (() -> Void)?
     var setKickBoardData: (() -> Void)?
     var kickboardData: Kickboard?
+    var deleteAnnotation: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -83,6 +84,7 @@ class RentalModal: UIView {
         now.setDate(Date())
         userDefaultsManager.setRentalKickboardData(kickboardId: kickboardData.kickBoardID, kickboardNumber: kickboardData.kickBoardNumber, rentalStartTime: now)
         setupView()
+        deleteAnnotation?()
     }
     
     @IBAction func returnBikeButtonTapped(_ sender: UIButton) {

@@ -56,7 +56,9 @@ class RegistViewController: UIViewController {
         registNmaeTextField.text = ""
         registIDTextField.text = ""
         registPasswordTextField.text = ""
+        registPasswordTextField.textContentType = .oneTimeCode
         checkPasswordTextField.text = ""
+        checkPasswordTextField.textContentType = .oneTimeCode
         passwordEyeButton.isHidden = true
         pwCheckEyeButton.isHidden = true
         loginButton.tintColor = UIColor(named: "defaultsColor")
