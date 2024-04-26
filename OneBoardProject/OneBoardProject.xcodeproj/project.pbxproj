@@ -26,7 +26,6 @@
 		2E908ACF2BD64BF500D54773 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E908ACE2BD64BF500D54773 /* UserViewController.swift */; };
 		2E908AD22BD68B6C00D54773 /* UserDefaultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E908AD12BD68B6C00D54773 /* UserDefaultTableViewCell.xib */; };
 		2E908AD32BD68B6C00D54773 /* UserDefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E908AD02BD68B6C00D54773 /* UserDefaultTableViewCell.swift */; };
-		2ED8C4312BD91F72008755C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ED8C4302BD91F72008755C0 /* Main.storyboard */; };
 		2EE26A062BD93F3F00D4CB1B /* UserStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EE26A052BD93F3F00D4CB1B /* UserStoryboard.storyboard */; };
 		2EE26A082BDA12E300D4CB1B /* UserCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE26A072BDA12E300D4CB1B /* UserCoreDataManager.swift */; };
 		2EE26A0E2BDA56D200D4CB1B /* RentalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE26A0D2BDA56D200D4CB1B /* RentalDataManager.swift */; };
@@ -58,7 +57,6 @@
 		2E908ACE2BD64BF500D54773 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		2E908AD02BD68B6C00D54773 /* UserDefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultTableViewCell.swift; sourceTree = "<group>"; };
 		2E908AD12BD68B6C00D54773 /* UserDefaultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDefaultTableViewCell.xib; sourceTree = "<group>"; };
-		2ED8C4302BD91F72008755C0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2EE26A052BD93F3F00D4CB1B /* UserStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserStoryboard.storyboard; sourceTree = "<group>"; };
 		2EE26A072BDA12E300D4CB1B /* UserCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoreDataManager.swift; sourceTree = "<group>"; };
 		2EE26A0D2BDA56D200D4CB1B /* RentalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalDataManager.swift; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 		2E3865522BDA9D6D00EF80B9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2ED8C4302BD91F72008755C0 /* Main.storyboard */,
 				25D079722BDA2A2B005ED619 /* RentalModal.xib */,
 				0BE6C0DB2BD64E1000B78DC6 /* LoginPage.storyboard */,
 				2EE26A052BD93F3F00D4CB1B /* UserStoryboard.storyboard */,
@@ -214,7 +211,6 @@
 			files = (
 				2E908AC22BD64A7800D54773 /* Assets.xcassets in Resources */,
 				25D079732BDA2A2B005ED619 /* RentalModal.xib in Resources */,
-				2ED8C4312BD91F72008755C0 /* Main.storyboard in Resources */,
 				0BE6C0DC2BD64E1000B78DC6 /* LoginPage.storyboard in Resources */,
 				2E695CF82BD7463D00D8263E /* RentalListTableViewCell.xib in Resources */,
 				2EE26A062BD93F3F00D4CB1B /* UserStoryboard.storyboard in Resources */,
