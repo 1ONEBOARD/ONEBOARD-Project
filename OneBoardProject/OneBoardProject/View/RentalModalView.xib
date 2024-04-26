@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RentalModal" customModule="OneBoardProject" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="Nef-K5-tCh" id="qgL-nC-klh"/>
+                <outlet property="durationTimeLabel" destination="0Qs-39-YiB" id="dXd-vl-wT4"/>
+                <outlet property="durationTimeNumberLabel" destination="8a9-rU-2DC" id="pva-hM-Q75"/>
+                <outlet property="kickBoardIdLabel" destination="Rfd-bw-i1I" id="rRJ-0G-98O"/>
+                <outlet property="kickBoardImageView" destination="eFL-tf-txI" id="rkP-Cn-7VM"/>
+                <outlet property="kickBoardNumberLabel" destination="7j8-hh-Btb" id="KDr-jG-AXC"/>
+                <outlet property="rentButton" destination="iZ6-Qe-jvR" id="Lc0-mS-ahm"/>
+                <outlet property="rentalView" destination="uiA-Jb-euJ" id="1Xp-sz-Pvb"/>
+                <outlet property="returnBikeButton" destination="2V0-My-axD" id="B3p-UA-o9l"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="k0n-IS-66a">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiA-Jb-euJ">
+                    <rect key="frame" x="0.0" y="574" width="393" height="278"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nef-K5-tCh">
+                            <rect key="frame" x="20" y="183" width="168" height="55"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="55" id="Gw3-SL-eAq"/>
+                                <constraint firstAttribute="width" constant="168" id="avV-jh-P5E"/>
+                            </constraints>
+                            <color key="tintColor" systemColor="systemGreenColor"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="취소하기">
+                                <fontDescription key="titleFontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
+                            </buttonConfiguration>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="-1" eventType="touchUpInside" id="3ll-0q-GwO"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZ6-Qe-jvR">
+                            <rect key="frame" x="205" y="183" width="168" height="55"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="168" id="9NL-gi-9n2"/>
+                                <constraint firstAttribute="height" constant="55" id="uoS-Ez-lWG"/>
+                            </constraints>
+                            <color key="tintColor" systemColor="systemGreenColor"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="대여하기">
+                                <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                            </buttonConfiguration>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="rentButtonTapped:" destination="-1" eventType="touchUpInside" id="FEj-Or-V1G"/>
+                            </connections>
+                        </button>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle.portrait.and.arrow.forward.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eFL-tf-txI">
+                            <rect key="frame" x="271" y="40.333333333333314" width="102" height="101.66666666666669"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="eFL-tf-txI" secondAttribute="height" multiplier="1:1" id="12B-iF-cVI"/>
+                                <constraint firstAttribute="height" constant="102" id="gl3-Fg-VOD"/>
+                                <constraint firstAttribute="width" constant="102" id="zuc-2S-C2b"/>
+                            </constraints>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="7AL-ZY-2zg">
+                            <rect key="frame" x="20" y="40" width="211" height="47.666666666666657"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KickBoard_ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rfd-bw-i1I">
+                                    <rect key="frame" x="0.0" y="0.0" width="106.33333333333333" height="20.333333333333332"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KickBoard_Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7j8-hh-Btb">
+                                    <rect key="frame" x="0.0" y="27.333333333333371" width="152.66666666666666" height="20.333333333333329"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="tZZ-AZ-pJn">
+                            <rect key="frame" x="323" y="40" width="50" height="107"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qs-39-YiB">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8a9-rU-2DC">
+                                    <rect key="frame" x="0.0" y="57" width="50" height="50"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2V0-My-axD">
+                            <rect key="frame" x="20" y="183" width="353" height="55"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="353" id="0SM-n8-iDj"/>
+                                <constraint firstAttribute="height" constant="55" id="77z-hs-oWC"/>
+                            </constraints>
+                            <color key="tintColor" name="green"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="반납하기">
+                                <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
+                            </buttonConfiguration>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="returnBikeButtonTapped:" destination="-1" eventType="touchUpInside" id="Nus-dy-tZV"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="2V0-My-axD" secondAttribute="trailing" constant="20" id="5aI-Eq-ypL"/>
+                        <constraint firstItem="eFL-tf-txI" firstAttribute="leading" secondItem="7AL-ZY-2zg" secondAttribute="trailing" constant="40" id="BVe-Ns-v1h"/>
+                        <constraint firstAttribute="bottom" secondItem="iZ6-Qe-jvR" secondAttribute="bottom" constant="40" id="FM7-wU-ig6"/>
+                        <constraint firstAttribute="height" constant="278" id="MiR-vF-FUL"/>
+                        <constraint firstAttribute="bottom" secondItem="Nef-K5-tCh" secondAttribute="bottom" constant="40" id="Qie-gR-ZVa"/>
+                        <constraint firstAttribute="bottom" secondItem="2V0-My-axD" secondAttribute="bottom" constant="40" id="R8j-8L-Xh7"/>
+                        <constraint firstItem="7AL-ZY-2zg" firstAttribute="top" secondItem="uiA-Jb-euJ" secondAttribute="top" constant="40" id="Tl5-Jf-trt"/>
+                        <constraint firstAttribute="trailing" secondItem="iZ6-Qe-jvR" secondAttribute="trailing" constant="20" id="UGX-Nq-iK7"/>
+                        <constraint firstAttribute="bottom" secondItem="iZ6-Qe-jvR" secondAttribute="bottom" constant="40" id="UJI-pK-DRb"/>
+                        <constraint firstItem="eFL-tf-txI" firstAttribute="top" secondItem="uiA-Jb-euJ" secondAttribute="top" constant="40" id="gvE-80-9Vq"/>
+                        <constraint firstAttribute="trailing" secondItem="tZZ-AZ-pJn" secondAttribute="trailing" constant="20" id="hFp-lT-HPt"/>
+                        <constraint firstAttribute="trailing" secondItem="eFL-tf-txI" secondAttribute="trailing" constant="20" id="nEz-Qy-aGV"/>
+                        <constraint firstItem="7AL-ZY-2zg" firstAttribute="leading" secondItem="uiA-Jb-euJ" secondAttribute="leading" constant="20" id="ngm-v5-6pf"/>
+                        <constraint firstItem="tZZ-AZ-pJn" firstAttribute="top" secondItem="uiA-Jb-euJ" secondAttribute="top" constant="40" id="o6M-Cg-frq"/>
+                        <constraint firstItem="2V0-My-axD" firstAttribute="leading" secondItem="uiA-Jb-euJ" secondAttribute="leading" constant="20" id="rul-P2-lEZ"/>
+                        <constraint firstAttribute="trailing" secondItem="iZ6-Qe-jvR" secondAttribute="trailing" constant="20" id="sTz-5h-sym"/>
+                        <constraint firstItem="Nef-K5-tCh" firstAttribute="leading" secondItem="uiA-Jb-euJ" secondAttribute="leading" constant="20" id="wiG-cD-cDi"/>
+                        <constraint firstAttribute="width" constant="393" id="zsM-am-fgv"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="2ys-Wo-2PK"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="uiA-Jb-euJ" secondAttribute="bottom" id="Xp1-eL-v5B"/>
+                <constraint firstAttribute="trailing" secondItem="uiA-Jb-euJ" secondAttribute="trailing" id="eNb-T8-i3Q"/>
+                <constraint firstItem="uiA-Jb-euJ" firstAttribute="leading" secondItem="k0n-IS-66a" secondAttribute="leading" id="oou-5Q-98l"/>
+            </constraints>
+            <point key="canvasLocation" x="-830" y="98"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="rectangle.portrait.and.arrow.forward.fill" catalog="system" width="128" height="108"/>
+        <namedColor name="green">
+            <color red="0.047058823529411764" green="0.72549019607843135" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
