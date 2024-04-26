@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD:OneBoardProject/OneBoardProject/Base.lproj/Main.storyboard
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+>>>>>>> fb0a73bb56998b06975de84a68979a498a2d641f:OneBoardProject/OneBoardProject/View/Main.storyboard
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
@@ -11,6 +15,7 @@
         <!--Rental-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+<<<<<<< HEAD:OneBoardProject/OneBoardProject/Base.lproj/Main.storyboard
                 <viewController id="BYZ-38-t0r" customClass="Rental" customModule="OneBoardProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -27,6 +32,12 @@
                                 </connections>
                             </button>
                         </subviews>
+=======
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="OneBoardProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+>>>>>>> fb0a73bb56998b06975de84a68979a498a2d641f:OneBoardProject/OneBoardProject/View/Main.storyboard
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -34,7 +45,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="gI4-Pe-I1I" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
+<<<<<<< HEAD:OneBoardProject/OneBoardProject/Base.lproj/Main.storyboard
             <point key="canvasLocation" x="61.832061068702288" y="-2.1126760563380285"/>
+=======
+            <point key="canvasLocation" x="-358" y="-44"/>
+>>>>>>> fb0a73bb56998b06975de84a68979a498a2d641f:OneBoardProject/OneBoardProject/View/Main.storyboard
         </scene>
     </scenes>
     <resources>
