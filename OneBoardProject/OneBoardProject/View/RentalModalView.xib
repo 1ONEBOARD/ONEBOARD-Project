@@ -166,7 +166,7 @@
                 <constraint firstAttribute="trailing" secondItem="uiA-Jb-euJ" secondAttribute="trailing" id="eNb-T8-i3Q"/>
                 <constraint firstItem="uiA-Jb-euJ" firstAttribute="leading" secondItem="k0n-IS-66a" secondAttribute="leading" id="oou-5Q-98l"/>
             </constraints>
-            <point key="canvasLocation" x="-830" y="98"/>
+            <point key="canvasLocation" x="-837" y="96"/>
         </view>
     </objects>
     <resources>

@@ -25,6 +25,9 @@ class RentalModal: UIView {
     var setKickBoardData: (() -> Void)?
     var kickboardData: Kickboard?
     var deleteAnnotation: (() -> Void)?
+    var returnButtonAction: (() -> Void)?
+    var rentalmodalReady: ((RentalModal) -> Void)?
+    var passthroughAreas: [CGRect] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,6 +47,19 @@ class RentalModal: UIView {
         view.frame = self.bounds
         self.addSubview(view)
         setupView()
+    }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        // 해당 포인트가 통과 영역 안에 있는지 확인
+        for area in passthroughAreas {
+            if area.contains(point) {
+                // 터치 이벤트를 무시하고 뒤에 있는 뷰로 전달
+                return nil
+            }
+        }
+        
+        // 기본 동작 수행
+        return super.hitTest(point, with: event)
     }
     
     func setupView() {
@@ -78,17 +94,23 @@ class RentalModal: UIView {
     }
     
     @IBAction func rentButtonTapped(_ sender: UIButton) {
+        
         userDefaultsManager.setUserDefaults(userStatus: true)
-        guard let kickboardData = kickboardData else { return }
+        setupView()
+        
+        // 어노테이션 삭제
+        deleteAnnotation?()
+        guard let kickboardData = kickboardData else {
+            print("kickboardData 저장 싪패")
+            return
+        }
         var now = ""
         now.setDate(Date())
+        print("현재 시간은 \(now)")
         userDefaultsManager.setRentalKickboardData(kickboardId: kickboardData.kickBoardID, kickboardNumber: kickboardData.kickBoardNumber, rentalStartTime: now)
-        setupView()
-        deleteAnnotation?()
     }
     
     @IBAction func returnBikeButtonTapped(_ sender: UIButton) {
-        
         let userID = userDefaultsManager.getUserDefaultsUserID()
         let kickboardID = userDefaultsManager.getUserDefaultsKickboardID()
         let kickboardNumber = userDefaultsManager.getUserDefaultsKickboardNumber()
@@ -101,6 +123,7 @@ class RentalModal: UIView {
         
         userDefaultsManager.setUserDefaults(userStatus: false)
         setupView()
+        returnButtonAction?()
     }
 }
 

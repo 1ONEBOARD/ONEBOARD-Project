@@ -65,6 +65,8 @@ struct UserDefaultsManager {
         guard let start = getUserDefaultsKickboardStartTime().toDate() else {
             return 0
         }
+        print(start)
+        print(Date())
         return Int(round(Date().timeIntervalSince(start) / 60))
     }
     

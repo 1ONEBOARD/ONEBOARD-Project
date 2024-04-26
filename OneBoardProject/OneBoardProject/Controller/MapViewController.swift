@@ -13,7 +13,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var mapView: MKMapView!
     let manager = CLLocationManager()
     var kickboardManager = KickboardDataManager()
+    var userDefaultsManager = UserDefaultsManager.shared
     var kickboardList = [Kickboard]()
+    var rentalmodal: RentalModal!
+    var rentalKickboardData: Kickboard?
     
     var myLocationButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -43,6 +46,25 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         setupMapView()
         setupButton()
         setupBackButton()
+        setupRentalModal()
+        rentalmodal.cancelAction = {
+            self.deleteRentalModal()
+            self.buttonStackView.removeFromSuperview()
+            self.setupButton()
+        }
+        print(userDefaultsManager.getUserDefaultsUserStatus())
+    }
+    
+    func setupRentalModal() {
+        rentalmodal = RentalModal()
+    }
+    func pushRentalModal() {
+        view.addSubview(rentalmodal)
+        rentalmodal.frame = view.bounds
+    }
+    
+    func deleteRentalModal() {
+        rentalmodal.removeFromSuperview()
     }
     
     func setupKickboardData() {
@@ -76,17 +98,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let touchLocation = gestureReconizer.location(in: mapView)
         let locationCoordinate = mapView.convert(touchLocation, toCoordinateFrom: mapView)
         
-        let alert = UIAlertController(title: "반납하기", message: "이곳에 반납하시겠습니까?", preferredStyle: .alert)
-        let success = UIAlertAction(title: "확인", style: .default) { action in
-            self.addAnnotationAtCoordinate(locationCoordinate)
-            UserDefaults.standard.setValue(false, forKey: "userStatus")
-        }
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
-             
-        alert.addAction(success)
-        alert.addAction(cancel)
+        pushRentalModal()
         
-        self.present(alert, animated: true, completion: nil)
+        rentalmodal.returnButtonAction = {
+            self.addAnnotationAtCoordinate(locationCoordinate)
+        }
+//        let alert = UIAlertController(title: "반납하기", message: "이곳에 반납하시겠습니까?", preferredStyle: .alert)
+//        let success = UIAlertAction(title: "확인", style: .default) { action in
+//            self.addAnnotationAtCoordinate(locationCoordinate)
+//            UserDefaults.standard.setValue(false, forKey: "userStatus")
+//        }
+//        let cancel = UIAlertAction(title: "취소", style: .cancel)
+//             
+//        alert.addAction(success)
+//        alert.addAction(cancel)
+//        
+//        self.present(alert, animated: true, completion: nil)
     }
     
     func addAnnotationAtCoordinate(_ coordinate: CLLocationCoordinate2D) {
@@ -164,6 +191,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             let button = UIButton(type: .detailDisclosure)
             annotationView?.rightCalloutAccessoryView = button
+            annotationView?.rightCalloutAccessoryView = button
         }
         return annotationView
     }
@@ -171,6 +199,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: - annotation 선택시 모달창 띄움
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
         buttonStackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -300).isActive = true
         
         UIView.animate(withDuration: 0.5) {
@@ -179,27 +208,29 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         view.image = UIImage(named: "locationRed")
         
-        let storyboard = UIStoryboard(name: "UserStoryboard", bundle: nil)
-        if let modalViewController = storyboard.instantiateViewController(withIdentifier: "RentalViewController") as? RentalViewController {
-            modalViewController.modalPresentationStyle = .overCurrentContext
-            guard let annotation = view.annotation, 
-                  let kick = annotation.subtitle,
-                  let kickNum = kick else { return }
-            modalViewController.rentalKickboardData = kickboardManager.getKickboardWithNumber(kickboardNumber: Int(kickNum) ?? 0)
-            
-            modalViewController.rentalmodalReady = { modal in
-                modal.deleteAnnotation = {
-                    if let annotation = view.annotation {
-                        UIView.animate(withDuration: 0.2, animations: { view.alpha = 0 }) { (finished) in
-                            if finished { 
-                                mapView.removeAnnotation(annotation)
-                                view.alpha = 1
-                            }
-                        }
+        pushRentalModal()
+        
+        
+        guard let annotation = view.annotation,
+              let kick = annotation.subtitle,
+              let kickNum = kick else {
+            print("킥보드 데이터 저장 실패")
+            return
+        }
+        
+        
+        rentalmodal.kickboardData = kickboardManager.getKickboardWithNumber(kickboardNumber: Int(kickNum) ?? 0)
+        
+        // 어노테이션 삭제
+        rentalmodal.deleteAnnotation = {
+            if let annotation = view.annotation {
+                UIView.animate(withDuration: 0.2, animations: { view.alpha = 0 }) { (finished) in
+                    if finished {
+                        mapView.removeAnnotation(annotation)
+                        view.alpha = 1
                     }
                 }
             }
-            self.present(modalViewController, animated: true, completion: nil)
         }
     }
     
