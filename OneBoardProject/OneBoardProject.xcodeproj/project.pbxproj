@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25D0796F2BD680EB005ED619 /* Rental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D0796E2BD680EB005ED619 /* Rental.swift */; };
+		25D079712BD8E4E7005ED619 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D079702BD8E4E7005ED619 /* Data.swift */; };
+		25D079732BDA2A2B005ED619 /* RentalModal.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25D079722BDA2A2B005ED619 /* RentalModal.xib */; };
+		25D079752BDA2F7E005ED619 /* RentalModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D079742BDA2F7E005ED619 /* RentalModal.swift */; };
+		25D079792BDA32AF005ED619 /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25D079782BDA32AF005ED619 /* Empty.xib */; };
 		2E908AB62BD64A7500D54773 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E908AB52BD64A7500D54773 /* AppDelegate.swift */; };
 		2E908AB82BD64A7500D54773 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E908AB72BD64A7500D54773 /* SceneDelegate.swift */; };
 		2E908ABA2BD64A7500D54773 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E908AB92BD64A7500D54773 /* ViewController.swift */; };
@@ -17,6 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25D0796E2BD680EB005ED619 /* Rental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rental.swift; sourceTree = "<group>"; };
+		25D079702BD8E4E7005ED619 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		25D079722BDA2A2B005ED619 /* RentalModal.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RentalModal.xib; sourceTree = "<group>"; };
+		25D079742BDA2F7E005ED619 /* RentalModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalModal.swift; sourceTree = "<group>"; };
+		25D079782BDA32AF005ED619 /* Empty.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Empty.xib; sourceTree = "<group>"; };
 		2E908AB22BD64A7500D54773 /* OneBoardProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneBoardProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E908AB52BD64A7500D54773 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E908AB72BD64A7500D54773 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +71,12 @@
 				2E908AB52BD64A7500D54773 /* AppDelegate.swift */,
 				2E908AB72BD64A7500D54773 /* SceneDelegate.swift */,
 				2E908AB92BD64A7500D54773 /* ViewController.swift */,
+				25D079722BDA2A2B005ED619 /* RentalModal.xib */,
+				25D079782BDA32AF005ED619 /* Empty.xib */,
+				25D079742BDA2F7E005ED619 /* RentalModal.swift */,
+				25D0796E2BD680EB005ED619 /* Rental.swift */,
 				2E908ABB2BD64A7500D54773 /* Main.storyboard */,
+				25D079702BD8E4E7005ED619 /* Data.swift */,
 				2E908AC12BD64A7800D54773 /* Assets.xcassets */,
 				2E908AC32BD64A7800D54773 /* LaunchScreen.storyboard */,
 				2E908AC62BD64A7800D54773 /* Info.plist */,
@@ -128,9 +143,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25D079792BDA32AF005ED619 /* Empty.xib in Resources */,
 				2E908AC22BD64A7800D54773 /* Assets.xcassets in Resources */,
 				2E908AC52BD64A7800D54773 /* Base in Resources */,
 				2E908ABD2BD64A7500D54773 /* Base in Resources */,
+				25D079732BDA2A2B005ED619 /* RentalModal.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,9 +158,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25D0796F2BD680EB005ED619 /* Rental.swift in Sources */,
+				25D079712BD8E4E7005ED619 /* Data.swift in Sources */,
 				2E908ABA2BD64A7500D54773 /* ViewController.swift in Sources */,
 				2E908AC02BD64A7500D54773 /* OneBoardProject.xcdatamodeld in Sources */,
 				2E908AB62BD64A7500D54773 /* AppDelegate.swift in Sources */,
+				25D079752BDA2F7E005ED619 /* RentalModal.swift in Sources */,
 				2E908AB82BD64A7500D54773 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
