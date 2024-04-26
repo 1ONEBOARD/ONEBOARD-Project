@@ -149,9 +149,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="circle" catalog="system" width="32" height="32"/>
+        <image name="circle" catalog="system" width="128" height="123"/>
         <namedColor name="GcooColor">
-            <color red="0.32899999618530273" green="0.71399998664855957" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.046999998390674591" green="0.72500002384185791" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="defaultsColor">
             <color red="0.55699998140335083" green="0.55699998140335083" blue="0.55699998140335083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

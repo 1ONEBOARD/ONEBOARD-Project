@@ -17,6 +17,7 @@ class UserViewController: UIViewController {
     var userName: String = ""
     var userID: String = ""
     var userStatus: Bool = false
+    var rentalList = [KickboardRental]()
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -28,6 +29,8 @@ class UserViewController: UIViewController {
         setLogOutButton()
         // TableView 설정
         setUserTableView()
+        // 유저 id에 따른 rentalList 설정
+        setKickboardList()
     }
     
     

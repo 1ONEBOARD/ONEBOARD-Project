@@ -74,7 +74,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4140" y="-15"/>
+            <point key="canvasLocation" x="4158" y="-15"/>
+        </scene>
+        <!--Rental View Controller-->
+        <scene sceneID="omh-Fi-xtv">
+            <objects>
+                <viewController storyboardIdentifier="RentalViewController" id="9BR-Dh-NLF" customClass="RentalViewController" customModule="OneBoardProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KAI-FZ-5Hm">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="lRT-Vc-y9h"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YUb-r9-K8r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4937" y="-15"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3GP-mn-iUB">
@@ -309,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zho-gu-Cfh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1842" y="-15"/>
+            <point key="canvasLocation" x="1831" y="-15"/>
         </scene>
     </scenes>
     <resources>

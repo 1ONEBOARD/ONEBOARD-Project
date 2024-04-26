@@ -68,11 +68,12 @@ struct RentalDataManager {
         let predicate = NSPredicate(format: "userID == %@", userID)
         fetchRequest.predicate = predicate
         
-        let sortDescriptor = NSSortDescriptor(key: "rentalStartTime", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "rentalStartTime", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         do {
             rentalData = try context.fetch(fetchRequest)
+            print("Rentaldata return successfully!")
         } catch {
             print("Error fetching RentalData: \(error)")
         }

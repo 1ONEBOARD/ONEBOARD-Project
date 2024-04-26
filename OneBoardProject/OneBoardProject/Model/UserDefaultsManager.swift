@@ -19,10 +19,14 @@ struct UserDefaultsManager {
         UserDefaults.standard.set(autoLoginEnabled, forKey: UserDefault.autoLoginEnabled.rawValue)
     }
     
-    func setRentalKickboardData(kickboardId: Int, kickboardNumber: Int, rentalStartTime: String) {
+    func setRentalKickboardData(kickboardId: String, kickboardNumber: Int, rentalStartTime: String) {
         UserDefaults.standard.set(kickboardId, forKey: UserDefault.kickBoardID.rawValue)
         UserDefaults.standard.set(kickboardNumber, forKey: UserDefault.kickBoardNumber.rawValue)
         UserDefaults.standard.set(rentalStartTime, forKey: UserDefault.kickboardStartTime.rawValue)
+    }
+    
+    func setUserDefaults(userStatus: Bool) {
+        UserDefaults.standard.set(userStatus, forKey: UserDefault.userStatus.rawValue)
     }
     
     func deleteUserDefaultInfo() {
@@ -43,8 +47,9 @@ struct UserDefaultsManager {
         return UserDefaults.standard.bool(forKey: UserDefault.userStatus.rawValue)
     }
     
-    func getUserDefaultsKickboardID() -> Int {
-        return UserDefaults.standard.integer(forKey: UserDefault.kickBoardID.rawValue)
+    func getUserDefaultsKickboardID() -> String {
+        guard let kickboardId = UserDefaults.standard.string(forKey: UserDefault.kickBoardID.rawValue) else { return "" }
+        return kickboardId
     }
     
     func getUserDefaultsKickboardNumber() -> Int {
@@ -60,7 +65,7 @@ struct UserDefaultsManager {
         guard let start = getUserDefaultsKickboardStartTime().toDate() else {
             return 0
         }
-        return Int(Date().timeIntervalSince(start) / 60)
+        return Int(round(Date().timeIntervalSince(start) / 60))
     }
     
     func calculateKickboardRentalPrice() -> Int {

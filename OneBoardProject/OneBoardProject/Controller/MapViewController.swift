@@ -66,7 +66,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func createAnnotaion() {
         var annotations: [MKAnnotation] = []
         for i in 0..<kickboardList.count {
-            annotations.append(CustomAnnotation(title: kickboardList[i].kickBoardID, subtitle: String(kickboardList[i].kickBoardNumber), coordinate: CLLocationCoordinate2D(latitude: kickboardList[i].kickBoardLocation.0, longitude: kickboardList[i].kickBoardLocation.1)))
+            annotations.append(CustomAnnotation(title: kickboardList[i].kickBoardID, subtitle: String(kickboardList[i].kickBoardNumber), coordinate: CLLocationCoordinate2D(latitude: kickboardList[i].kickBoardLocation.0, longitude: kickboardList[i].kickBoardLocation.1), kickBoard: kickboardList[i]))
         }
         mapView.addAnnotations(annotations)
     }
@@ -119,16 +119,32 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         return annotationView
     }
+    
+    
+    // MARK: - annotation 선택시 모달창 띄움
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let storyboard = UIStoryboard(name: "UserStoryboard", bundle: nil)
+        if let modalViewController = storyboard.instantiateViewController(withIdentifier: "RentalViewController") as? RentalViewController {
+            modalViewController.modalPresentationStyle = .overCurrentContext
+            guard let annotation = view.annotation, 
+                  let kick = annotation.subtitle,
+                  let kickNum = kick else { return }
+            modalViewController.rentalKickboardData = kickboardManager.getKickboardWithNumber(kickboardNumber: Int(kickNum) ?? 0)
+            self.present(modalViewController, animated: true, completion: nil)
+        }
+    }
 }
 
 class CustomAnnotation: NSObject, MKAnnotation {
     var title: String?
     var subtitle: String?
     var coordinate: CLLocationCoordinate2D
-       
-    init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D) {
+    var kickBoard: Kickboard
+    
+    init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D, kickBoard: Kickboard) {
         self.title = title
         self.subtitle = subtitle
         self.coordinate = coordinate
+        self.kickBoard = kickBoard
     }
 }

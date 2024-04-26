@@ -25,6 +25,10 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+    func setKickboardList() {
+        rentalList = rentalDataManager.getTodoListCoreData(userID: userID)
+    }
+    
     // MARK: - 유저 정보 cell 설정
     func setUserDefaultCell(_ tableView: UITableView,
                             indexPath: IndexPath) -> UITableViewCell {
@@ -43,15 +47,10 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
                                indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "rentalListCell", for: indexPath) as! RentalListTableViewCell
-        
-        let rentalList = rentalDataManager.getTodoListCoreData(userID: userID)
         cell.kickBoardIDLabel.text = rentalList[indexPath.row].kickBoardID
         cell.kickBoardNumberLabel.text = "\(rentalList[indexPath.row].kickBoardNumber)"
         cell.rentalPriceLabel.text = setPriceLabel(price: Int(rentalList[indexPath.row].rentalPrice))
-        var rentalStartTimeLabel = ""
-        guard let startTime = rentalList[indexPath.row].rentalStartTime else { return cell }
-        rentalStartTimeLabel.setDate(startTime)
-        cell.rentalStartTimeLabel.text = rentalStartTimeLabel
+        cell.rentalStartTimeLabel.text = rentalList[indexPath.row].rentalStartTime
         cell.rentalTimeLabel.text = "\(Int(rentalList[indexPath.row].rentalTotalTime))분"
         
         return cell
@@ -143,13 +142,13 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
             switch section {
             case 0: 2
             case 1: 1
-            case 2: 0 // 수정
+            case 2: rentalList.count
             default: 0
             }
         }else {
             switch section {
             case 0: 2
-            case 1: 0 // 수정
+            case 1: rentalList.count
             default: 0
             }
         }
