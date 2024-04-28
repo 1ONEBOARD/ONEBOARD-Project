@@ -68,7 +68,7 @@ struct RentalDataManager {
         let predicate = NSPredicate(format: "userID == %@", userID)
         fetchRequest.predicate = predicate
         
-        let sortDescriptor = NSSortDescriptor(key: "rentalStartTime", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "rentalStartTime", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         do {
